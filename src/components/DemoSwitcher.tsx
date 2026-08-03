@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 const SURFACES = [
   { to: "/", label: "Landing" },
   { to: "/pay/$id", label: "Checkout público", params: { id: "orbita" } },
-  { to: "/app", label: "Backoffice" },
+  { to: "/app", label: "Dashboard do lojista" },
+  { to: "/app/admin", label: "Backoffice do admin" },
   { to: "/portal", label: "Portal do assinante" },
   { to: "/docs", label: "Documentação" },
   { to: "/demo", label: "Roteiro de demo" },
