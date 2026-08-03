@@ -1,6 +1,5 @@
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import {
-  Building2,
   CreditCard,
   FileCode2,
   Bell,
