@@ -16,6 +16,7 @@ import { Route as AppApiRouteImport } from './routes/app.api'
 import { Route as AppAssinaturasRouteImport } from './routes/app.assinaturas'
 import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
 import { Route as AppCobrancasRouteImport } from './routes/app.cobrancas'
+import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
 import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
 import { Route as AppTransacoesRouteImport } from './routes/app.transacoes'
 import { Route as AppWalletsRouteImport } from './routes/app.wallets'
@@ -56,6 +57,11 @@ const AppCobrancasRoute = AppCobrancasRouteImport.update({
   path: '/cobrancas',
   getParentRoute: () => AppRoute,
 } as any)
+const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppNotificacoesRoute = AppNotificacoesRouteImport.update({
   id: '/notificacoes',
   path: '/notificacoes',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/app/wallets': typeof AppWalletsRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/app/wallets': typeof AppWalletsRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/app/wallets': typeof AppWalletsRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/app/assinaturas'
     | '/app/checkout'
     | '/app/cobrancas'
+    | '/app/configuracoes'
     | '/app/notificacoes'
     | '/app/transacoes'
     | '/app/wallets'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/app/assinaturas'
     | '/app/checkout'
     | '/app/cobrancas'
+    | '/app/configuracoes'
     | '/app/notificacoes'
     | '/app/transacoes'
     | '/app/wallets'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/app/assinaturas'
     | '/app/checkout'
     | '/app/cobrancas'
+    | '/app/configuracoes'
     | '/app/notificacoes'
     | '/app/transacoes'
     | '/app/wallets'
@@ -214,6 +226,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCobrancasRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/configuracoes': {
+      id: '/app/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/app/configuracoes'
+      preLoaderRoute: typeof AppConfiguracoesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/notificacoes': {
       id: '/app/notificacoes'
       path: '/notificacoes'
@@ -250,6 +269,7 @@ interface AppRouteChildren {
   AppAssinaturasRoute: typeof AppAssinaturasRoute
   AppCheckoutRoute: typeof AppCheckoutRoute
   AppCobrancasRoute: typeof AppCobrancasRoute
+  AppConfiguracoesRoute: typeof AppConfiguracoesRoute
   AppNotificacoesRoute: typeof AppNotificacoesRoute
   AppTransacoesRoute: typeof AppTransacoesRoute
   AppWalletsRoute: typeof AppWalletsRoute
@@ -261,6 +281,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssinaturasRoute: AppAssinaturasRoute,
   AppCheckoutRoute: AppCheckoutRoute,
   AppCobrancasRoute: AppCobrancasRoute,
+  AppConfiguracoesRoute: AppConfiguracoesRoute,
   AppNotificacoesRoute: AppNotificacoesRoute,
   AppTransacoesRoute: AppTransacoesRoute,
   AppWalletsRoute: AppWalletsRoute,
