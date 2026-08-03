@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
 
 export default defineConfig(async ({ command }) => {
   const plugins = [
@@ -20,6 +21,9 @@ export default defineConfig(async ({ command }) => {
       // (nosso wrapper de erro de SSR). O nitro constrói a partir dela.
       server: { entry: "server" },
     }),
+    // Precisa vir depois do tanstackStart: fornece o runtime de React Refresh
+    // exigido pelo modo de desenvolvimento do TanStack Start.
+    viteReact(),
   ];
 
   // O nitro participa apenas do build de produção.
