@@ -16,6 +16,7 @@ import { Route as AppApiRouteImport } from './routes/app.api'
 import { Route as AppAssinaturasRouteImport } from './routes/app.assinaturas'
 import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
 import { Route as AppCobrancasRouteImport } from './routes/app.cobrancas'
+import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
 import { Route as AppTransacoesRouteImport } from './routes/app.transacoes'
 import { Route as AppWalletsRouteImport } from './routes/app.wallets'
 import { Route as PayIdRouteImport } from './routes/pay.$id'
@@ -55,6 +56,11 @@ const AppCobrancasRoute = AppCobrancasRouteImport.update({
   path: '/cobrancas',
   getParentRoute: () => AppRoute,
 } as any)
+const AppNotificacoesRoute = AppNotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppTransacoesRoute = AppTransacoesRouteImport.update({
   id: '/transacoes',
   path: '/transacoes',
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/app/wallets': typeof AppWalletsRoute
   '/pay/$id': typeof PayIdRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/app/wallets': typeof AppWalletsRoute
   '/pay/$id': typeof PayIdRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
   '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/app/wallets': typeof AppWalletsRoute
   '/pay/$id': typeof PayIdRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/app/assinaturas'
     | '/app/checkout'
     | '/app/cobrancas'
+    | '/app/notificacoes'
     | '/app/transacoes'
     | '/app/wallets'
     | '/pay/$id'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/app/assinaturas'
     | '/app/checkout'
     | '/app/cobrancas'
+    | '/app/notificacoes'
     | '/app/transacoes'
     | '/app/wallets'
     | '/pay/$id'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/app/assinaturas'
     | '/app/checkout'
     | '/app/cobrancas'
+    | '/app/notificacoes'
     | '/app/transacoes'
     | '/app/wallets'
     | '/pay/$id'
@@ -202,6 +214,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCobrancasRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/notificacoes': {
+      id: '/app/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/app/notificacoes'
+      preLoaderRoute: typeof AppNotificacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/transacoes': {
       id: '/app/transacoes'
       path: '/transacoes'
@@ -231,6 +250,7 @@ interface AppRouteChildren {
   AppAssinaturasRoute: typeof AppAssinaturasRoute
   AppCheckoutRoute: typeof AppCheckoutRoute
   AppCobrancasRoute: typeof AppCobrancasRoute
+  AppNotificacoesRoute: typeof AppNotificacoesRoute
   AppTransacoesRoute: typeof AppTransacoesRoute
   AppWalletsRoute: typeof AppWalletsRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -241,6 +261,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssinaturasRoute: AppAssinaturasRoute,
   AppCheckoutRoute: AppCheckoutRoute,
   AppCobrancasRoute: AppCobrancasRoute,
+  AppNotificacoesRoute: AppNotificacoesRoute,
   AppTransacoesRoute: AppTransacoesRoute,
   AppWalletsRoute: AppWalletsRoute,
   AppIndexRoute: AppIndexRoute,
