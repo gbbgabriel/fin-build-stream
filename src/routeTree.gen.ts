@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppApiRouteImport } from './routes/app.api'
 import { Route as AppAssinaturasRouteImport } from './routes/app.assinaturas'
 import { Route as AppCobrancasRouteImport } from './routes/app.cobrancas'
 import { Route as AppTransacoesRouteImport } from './routes/app.transacoes'
@@ -30,6 +31,11 @@ const AppRoute = AppRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppApiRoute = AppApiRouteImport.update({
+  id: '/api',
+  path: '/api',
   getParentRoute: () => AppRoute,
 } as any)
 const AppAssinaturasRoute = AppAssinaturasRouteImport.update({
@@ -56,6 +62,7 @@ const PayIdRoute = PayIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/cobrancas': typeof AppCobrancasRoute
   '/app/transacoes': typeof AppTransacoesRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/cobrancas': typeof AppCobrancasRoute
   '/app/transacoes': typeof AppTransacoesRoute
@@ -74,6 +82,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/cobrancas': typeof AppCobrancasRoute
   '/app/transacoes': typeof AppTransacoesRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/api'
     | '/app/assinaturas'
     | '/app/cobrancas'
     | '/app/transacoes'
@@ -93,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app/api'
     | '/app/assinaturas'
     | '/app/cobrancas'
     | '/app/transacoes'
@@ -102,6 +113,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/app/api'
     | '/app/assinaturas'
     | '/app/cobrancas'
     | '/app/transacoes'
@@ -138,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/api': {
+      id: '/app/api'
+      path: '/api'
+      fullPath: '/app/api'
+      preLoaderRoute: typeof AppApiRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/assinaturas': {
       id: '/app/assinaturas'
       path: '/assinaturas'
@@ -170,6 +189,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppApiRoute: typeof AppApiRoute
   AppAssinaturasRoute: typeof AppAssinaturasRoute
   AppCobrancasRoute: typeof AppCobrancasRoute
   AppTransacoesRoute: typeof AppTransacoesRoute
@@ -177,6 +197,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppApiRoute: AppApiRoute,
   AppAssinaturasRoute: AppAssinaturasRoute,
   AppCobrancasRoute: AppCobrancasRoute,
   AppTransacoesRoute: AppTransacoesRoute,
