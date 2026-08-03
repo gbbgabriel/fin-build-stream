@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAssinaturasRouteImport } from './routes/app.assinaturas'
 import { Route as AppCobrancasRouteImport } from './routes/app.cobrancas'
 import { Route as AppTransacoesRouteImport } from './routes/app.transacoes'
 import { Route as PayIdRouteImport } from './routes/pay.$id'
@@ -29,6 +30,11 @@ const AppRoute = AppRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssinaturasRoute = AppAssinaturasRouteImport.update({
+  id: '/assinaturas',
+  path: '/assinaturas',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCobrancasRoute = AppCobrancasRouteImport.update({
@@ -50,6 +56,7 @@ const PayIdRoute = PayIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/cobrancas': typeof AppCobrancasRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/pay/$id': typeof PayIdRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/cobrancas': typeof AppCobrancasRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/pay/$id': typeof PayIdRoute
@@ -66,6 +74,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/cobrancas': typeof AppCobrancasRoute
   '/app/transacoes': typeof AppTransacoesRoute
   '/pay/$id': typeof PayIdRoute
@@ -74,13 +83,26 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/app' | '/app/cobrancas' | '/app/transacoes' | '/pay/$id' | '/app/'
+    | '/'
+    | '/app'
+    | '/app/assinaturas'
+    | '/app/cobrancas'
+    | '/app/transacoes'
+    | '/pay/$id'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app/cobrancas' | '/app/transacoes' | '/pay/$id' | '/app'
+  to:
+    | '/'
+    | '/app/assinaturas'
+    | '/app/cobrancas'
+    | '/app/transacoes'
+    | '/pay/$id'
+    | '/app'
   id:
     | '__root__'
     | '/'
     | '/app'
+    | '/app/assinaturas'
     | '/app/cobrancas'
     | '/app/transacoes'
     | '/pay/$id'
@@ -116,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/assinaturas': {
+      id: '/app/assinaturas'
+      path: '/assinaturas'
+      fullPath: '/app/assinaturas'
+      preLoaderRoute: typeof AppAssinaturasRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/cobrancas': {
       id: '/app/cobrancas'
       path: '/cobrancas'
@@ -141,12 +170,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppAssinaturasRoute: typeof AppAssinaturasRoute
   AppCobrancasRoute: typeof AppCobrancasRoute
   AppTransacoesRoute: typeof AppTransacoesRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAssinaturasRoute: AppAssinaturasRoute,
   AppCobrancasRoute: AppCobrancasRoute,
   AppTransacoesRoute: AppTransacoesRoute,
   AppIndexRoute: AppIndexRoute,
