@@ -24,7 +24,7 @@ const STEPS = [
   { t: "Checkout config", d: "Marca do lojista com preview ao vivo.", to: "/app/checkout", params: undefined },
   { t: "API e webhooks", d: "Chaves, log de entregas e reenvio.", to: "/app/api", params: undefined },
   { t: "Portal do assinante", d: "Recibos on-chain e cancelamento.", to: "/portal", params: undefined },
-  { t: "Backoffice do admin", d: "Clientes e lojistas da plataforma, volumes e histórico.", to: "/app/admin", params: undefined },
+  { t: "Backoffice do admin", d: "Clientes e lojistas da plataforma, volumes e histórico.", to: "/admin", params: undefined },
 ] as const;
 
 function Demo() {

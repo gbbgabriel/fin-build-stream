@@ -1,6 +1,5 @@
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import {
-  Building2,
   CreditCard,
   FileCode2,
   Bell,
@@ -31,7 +30,6 @@ const NAV = [
   { to: "/app/api", label: "API & Webhooks", icon: KeyRound },
   { to: "/app/notificacoes", label: "Notificações", icon: Bell },
   { to: "/app/configuracoes", label: "Configurações", icon: Settings },
-  { to: "/app/admin", label: "Backoffice admin", icon: Building2 },
 ] as const;
 
 export function AppShell() {

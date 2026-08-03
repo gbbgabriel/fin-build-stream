@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Search, X } from "lucide-react";
+import { Search, X, ShieldCheck, ArrowLeft } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { TENANTS, TRANSACTIONS, SUBSCRIPTIONS, type Transaction } from "@/lib/mock/data";
 import { brl, crypto6, dt, trunc } from "@/lib/format";
 import { StatusBadge } from "@/components/status";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/app/admin")({
+export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
       { title: "Backoffice do admin — FinBuild Pay" },
@@ -133,7 +134,23 @@ function Admin() {
   const selectedTenant = tenantRows.find((r) => r.t.id === openTenant) ?? null;
 
   return (
-    <div className="mx-auto max-w-[1400px] p-6">
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-surface-1/95 px-6 backdrop-blur">
+        <ShieldCheck strokeWidth={1.5} className="size-4" />
+        <span className="text-[14px] tracking-[-0.02em]">FinBuild · Console interno</span>
+        <span className="label-xs ml-2 rounded-full border border-border px-2 py-0.5">admin</span>
+        <Link
+          to="/app"
+          className="ml-auto flex items-center gap-2 rounded-md border border-border px-2.5 py-1.5 text-[12px] text-muted-foreground hover:bg-surface-2"
+        >
+          <ArrowLeft strokeWidth={1.5} className="size-3.5" />
+          Dashboard do lojista
+        </Link>
+        <div className="mono grid size-8 place-items-center rounded-full border border-border bg-surface-2 text-[11px]">
+          AD
+        </div>
+      </header>
+      <div className="mx-auto max-w-[1400px] p-6">
       <div className="label-xs">Painel interno FinBuild · somente admin</div>
       <h1 className="mt-2 text-[20px]">Backoffice do admin</h1>
       <p className="mt-2 max-w-[70ch] text-[13px] leading-relaxed text-muted-foreground">
@@ -396,6 +413,7 @@ function Admin() {
           </div>
         </Drawer>
       )}
+      </div>
     </div>
   );
 }
