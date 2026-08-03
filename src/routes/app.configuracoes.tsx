@@ -78,7 +78,7 @@ function Config() {
 
       {tab === "Equipe" && (
         <section className="mt-6 rounded-xl border border-border bg-surface-1">
-          {TEAM.map(([n, e, r]) => (
+          {TEAM.map(({ n, e, r }) => (
             <div key={e} className="flex items-center gap-3 border-b border-border p-4 text-[13px] last:border-0">
               <span className="mono grid size-8 place-items-center rounded-full border border-border bg-surface-3 text-[11px]">
                 {n.split(" ").map((p) => p[0]).join("")}
