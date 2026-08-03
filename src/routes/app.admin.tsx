@@ -17,7 +17,7 @@ function Admin() {
   const rows = TENANTS.map((t) => {
     const txs = TRANSACTIONS[t.id] ?? [];
     const confirmed = txs.filter((x) => x.status === "confirmed");
-    const volume = confirmed.reduce((s, x) => s + x.amountBRL, 0);
+    const volume = confirmed.reduce((s, x) => s + x.fiatBRL, 0);
     return { t, count: txs.length, volume, ok: confirmed.length / Math.max(txs.length, 1) };
   });
 
