@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useApp } from "@/lib/store";
-import { AUDIT_LOGS } from "@/lib/mock/data";
+import { AUDIT_LOG } from "@/lib/mock/data";
 
 export const Route = createFileRoute("/app/configuracoes")({
   head: () => ({
