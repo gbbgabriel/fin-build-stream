@@ -48,7 +48,9 @@ function Portal() {
             <div>
               <div className="label-xs">Status</div>
               <div className="mt-2">
-                <StatusBadge status={canceled ? "canceled" : "active"} />
+                <span className="rounded-full border border-border bg-surface-3 px-2.5 py-0.5 text-[11px] uppercase tracking-[0.08em]">
+                  {canceled ? "cancelada" : "ativa"}
+                </span>
               </div>
             </div>
             <div>
