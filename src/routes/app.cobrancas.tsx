@@ -37,7 +37,10 @@ function Cobrancas() {
   const [amount, setAmount] = useState("349");
 
   const create = () => {
-    if (!desc.trim()) return toast("Informe a descrição da cobrança");
+    if (!desc.trim()) {
+      toast("Informe a descrição da cobrança");
+      return;
+    }
     const id = `lnk_${Math.random().toString(16).slice(2, 8)}`;
     setLinks((l) => [{ id, desc, amount: Number(amount) || 0, status: "ativo", views: 0 }, ...l]);
     setDesc("");
