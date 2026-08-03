@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { DemoSwitcher } from "@/components/DemoSwitcher";
 import { StatusBadge } from "@/components/status";
-import { brl, crypto as fmtCrypto, trunc } from "@/lib/format";
+import { brl, crypto6 as fmtCrypto, trunc } from "@/lib/format";
 
 export const Route = createFileRoute("/portal")({
   head: () => ({
