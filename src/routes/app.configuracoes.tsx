@@ -18,10 +18,10 @@ export const Route = createFileRoute("/app/configuracoes")({
 const TABS = ["Organização", "Equipe", "Auditoria", "Privacidade"] as const;
 
 const TEAM = [
-  ["Diego Ramalho", "diego@orbita.com.br", "Proprietário"],
-  ["Renata Castro", "renata@orbita.com.br", "Administradora"],
-  ["Iuri Salgado", "iuri@orbita.com.br", "Financeiro"],
-  ["Bruna Teixeira", "bruna@orbita.com.br", "Somente leitura"],
+  { n: "Diego Ramalho", e: "diego@orbita.com.br", r: "Proprietário" },
+  { n: "Renata Castro", e: "renata@orbita.com.br", r: "Administradora" },
+  { n: "Iuri Salgado", e: "iuri@orbita.com.br", r: "Financeiro" },
+  { n: "Bruna Teixeira", e: "bruna@orbita.com.br", r: "Somente leitura" },
 ];
 
 function Config() {
