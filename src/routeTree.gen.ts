@@ -10,33 +10,220 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
+import { Route as DemoRouteImport } from './routes/demo'
+import { Route as DocsRouteImport } from './routes/docs'
+import { Route as PortalRouteImport } from './routes/portal'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAdminRouteImport } from './routes/app.admin'
+import { Route as AppApiRouteImport } from './routes/app.api'
+import { Route as AppAssinaturasRouteImport } from './routes/app.assinaturas'
+import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
+import { Route as AppCobrancasRouteImport } from './routes/app.cobrancas'
+import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
+import { Route as AppNotificacoesRouteImport } from './routes/app.notificacoes'
+import { Route as AppTransacoesRouteImport } from './routes/app.transacoes'
+import { Route as AppWalletsRouteImport } from './routes/app.wallets'
+import { Route as PayIdRouteImport } from './routes/pay.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAdminRoute = AppAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppApiRoute = AppApiRouteImport.update({
+  id: '/api',
+  path: '/api',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssinaturasRoute = AppAssinaturasRouteImport.update({
+  id: '/assinaturas',
+  path: '/assinaturas',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCheckoutRoute = AppCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCobrancasRoute = AppCobrancasRouteImport.update({
+  id: '/cobrancas',
+  path: '/cobrancas',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNotificacoesRoute = AppNotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTransacoesRoute = AppTransacoesRouteImport.update({
+  id: '/transacoes',
+  path: '/transacoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppWalletsRoute = AppWalletsRouteImport.update({
+  id: '/wallets',
+  path: '/wallets',
+  getParentRoute: () => AppRoute,
+} as any)
+const PayIdRoute = PayIdRouteImport.update({
+  id: '/pay/$id',
+  path: '/pay/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/demo': typeof DemoRoute
+  '/docs': typeof DocsRoute
+  '/portal': typeof PortalRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/api': typeof AppApiRoute
+  '/app/assinaturas': typeof AppAssinaturasRoute
+  '/app/checkout': typeof AppCheckoutRoute
+  '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/transacoes': typeof AppTransacoesRoute
+  '/app/wallets': typeof AppWalletsRoute
+  '/pay/$id': typeof PayIdRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/demo': typeof DemoRoute
+  '/docs': typeof DocsRoute
+  '/portal': typeof PortalRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/api': typeof AppApiRoute
+  '/app/assinaturas': typeof AppAssinaturasRoute
+  '/app/checkout': typeof AppCheckoutRoute
+  '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/transacoes': typeof AppTransacoesRoute
+  '/app/wallets': typeof AppWalletsRoute
+  '/pay/$id': typeof PayIdRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/demo': typeof DemoRoute
+  '/docs': typeof DocsRoute
+  '/portal': typeof PortalRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/api': typeof AppApiRoute
+  '/app/assinaturas': typeof AppAssinaturasRoute
+  '/app/checkout': typeof AppCheckoutRoute
+  '/app/cobrancas': typeof AppCobrancasRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
+  '/app/notificacoes': typeof AppNotificacoesRoute
+  '/app/transacoes': typeof AppTransacoesRoute
+  '/app/wallets': typeof AppWalletsRoute
+  '/pay/$id': typeof PayIdRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/demo'
+    | '/docs'
+    | '/portal'
+    | '/app/admin'
+    | '/app/api'
+    | '/app/assinaturas'
+    | '/app/checkout'
+    | '/app/cobrancas'
+    | '/app/configuracoes'
+    | '/app/notificacoes'
+    | '/app/transacoes'
+    | '/app/wallets'
+    | '/pay/$id'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/demo'
+    | '/docs'
+    | '/portal'
+    | '/app/admin'
+    | '/app/api'
+    | '/app/assinaturas'
+    | '/app/checkout'
+    | '/app/cobrancas'
+    | '/app/configuracoes'
+    | '/app/notificacoes'
+    | '/app/transacoes'
+    | '/app/wallets'
+    | '/pay/$id'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/demo'
+    | '/docs'
+    | '/portal'
+    | '/app/admin'
+    | '/app/api'
+    | '/app/assinaturas'
+    | '/app/checkout'
+    | '/app/cobrancas'
+    | '/app/configuracoes'
+    | '/app/notificacoes'
+    | '/app/transacoes'
+    | '/app/wallets'
+    | '/pay/$id'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  DemoRoute: typeof DemoRoute
+  DocsRoute: typeof DocsRoute
+  PortalRoute: typeof PortalRoute
+  PayIdRoute: typeof PayIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +235,150 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/admin': {
+      id: '/app/admin'
+      path: '/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AppAdminRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/api': {
+      id: '/app/api'
+      path: '/api'
+      fullPath: '/app/api'
+      preLoaderRoute: typeof AppApiRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/assinaturas': {
+      id: '/app/assinaturas'
+      path: '/assinaturas'
+      fullPath: '/app/assinaturas'
+      preLoaderRoute: typeof AppAssinaturasRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/checkout': {
+      id: '/app/checkout'
+      path: '/checkout'
+      fullPath: '/app/checkout'
+      preLoaderRoute: typeof AppCheckoutRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/cobrancas': {
+      id: '/app/cobrancas'
+      path: '/cobrancas'
+      fullPath: '/app/cobrancas'
+      preLoaderRoute: typeof AppCobrancasRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/configuracoes': {
+      id: '/app/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/app/configuracoes'
+      preLoaderRoute: typeof AppConfiguracoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/notificacoes': {
+      id: '/app/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/app/notificacoes'
+      preLoaderRoute: typeof AppNotificacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/transacoes': {
+      id: '/app/transacoes'
+      path: '/transacoes'
+      fullPath: '/app/transacoes'
+      preLoaderRoute: typeof AppTransacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/wallets': {
+      id: '/app/wallets'
+      path: '/wallets'
+      fullPath: '/app/wallets'
+      preLoaderRoute: typeof AppWalletsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/pay/$id': {
+      id: '/pay/$id'
+      path: '/pay/$id'
+      fullPath: '/pay/$id'
+      preLoaderRoute: typeof PayIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAdminRoute: typeof AppAdminRoute
+  AppApiRoute: typeof AppApiRoute
+  AppAssinaturasRoute: typeof AppAssinaturasRoute
+  AppCheckoutRoute: typeof AppCheckoutRoute
+  AppCobrancasRoute: typeof AppCobrancasRoute
+  AppConfiguracoesRoute: typeof AppConfiguracoesRoute
+  AppNotificacoesRoute: typeof AppNotificacoesRoute
+  AppTransacoesRoute: typeof AppTransacoesRoute
+  AppWalletsRoute: typeof AppWalletsRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAdminRoute: AppAdminRoute,
+  AppApiRoute: AppApiRoute,
+  AppAssinaturasRoute: AppAssinaturasRoute,
+  AppCheckoutRoute: AppCheckoutRoute,
+  AppCobrancasRoute: AppCobrancasRoute,
+  AppConfiguracoesRoute: AppConfiguracoesRoute,
+  AppNotificacoesRoute: AppNotificacoesRoute,
+  AppTransacoesRoute: AppTransacoesRoute,
+  AppWalletsRoute: AppWalletsRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  DemoRoute: DemoRoute,
+  DocsRoute: DocsRoute,
+  PortalRoute: PortalRoute,
+  PayIdRoute: PayIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
