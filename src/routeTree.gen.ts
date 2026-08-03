@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAdminRouteImport } from './routes/app.admin'
 import { Route as AppApiRouteImport } from './routes/app.api'
 import { Route as AppAssinaturasRouteImport } from './routes/app.assinaturas'
 import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
@@ -35,6 +36,11 @@ const AppRoute = AppRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAdminRoute = AppAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => AppRoute,
 } as any)
 const AppApiRoute = AppApiRouteImport.update({
@@ -86,6 +92,7 @@ const PayIdRoute = PayIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/admin': typeof AppAdminRoute
   '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/admin': typeof AppAdminRoute
   '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/admin': typeof AppAdminRoute
   '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/admin'
     | '/app/api'
     | '/app/assinaturas'
     | '/app/checkout'
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app/admin'
     | '/app/api'
     | '/app/assinaturas'
     | '/app/checkout'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/app/admin'
     | '/app/api'
     | '/app/assinaturas'
     | '/app/checkout'
@@ -196,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/admin': {
+      id: '/app/admin'
+      path: '/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AppAdminRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/api': {
@@ -265,6 +284,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppAdminRoute: typeof AppAdminRoute
   AppApiRoute: typeof AppApiRoute
   AppAssinaturasRoute: typeof AppAssinaturasRoute
   AppCheckoutRoute: typeof AppCheckoutRoute
@@ -277,6 +297,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAdminRoute: AppAdminRoute,
   AppApiRoute: AppApiRoute,
   AppAssinaturasRoute: AppAssinaturasRoute,
   AppCheckoutRoute: AppCheckoutRoute,
