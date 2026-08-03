@@ -26,7 +26,7 @@ export function DemoSwitcher() {
             <Link
               key={s.label}
               to={s.to}
-              params={"params" in s ? s.params : undefined}
+              {...("params" in s ? { params: s.params } : {})}
               onClick={() => setOpen(false)}
               className={cn(
                 "block rounded-md px-2.5 py-1.5 text-[13px] transition-colors hover:bg-surface-3",
