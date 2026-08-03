@@ -105,12 +105,12 @@ function Config() {
 
       {tab === "Auditoria" && (
         <section className="mt-6 rounded-xl border border-border bg-surface-1">
-          {AUDIT_LOGS.slice(0, 14).map((l) => (
-            <div key={l.id} className="grid grid-cols-[150px_1fr_auto] items-center gap-3 border-b border-border p-3.5 text-[13px] last:border-0">
-              <span className="mono text-[11px] text-faint">{l.when}</span>
+          {AUDIT_LOG.map((l) => (
+            <div key={l.at} className="grid grid-cols-[150px_1fr_auto] items-center gap-3 border-b border-border p-3.5 text-[13px] last:border-0">
+              <span className="mono text-[11px] text-faint">{l.at}</span>
               <span>
-                <span className="mono text-[12px]">{l.action}</span>
-                <span className="ml-2 text-muted-foreground">{l.detail}</span>
+                <span className="text-[13px]">{l.action}</span>
+                <span className="mono ml-2 text-[11px] text-muted-foreground">{l.resource}</span>
               </span>
               <span className="text-[12px] text-muted-foreground">{l.actor}</span>
             </div>
