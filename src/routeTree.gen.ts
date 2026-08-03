@@ -15,7 +15,6 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as PortalRouteImport } from './routes/portal'
 import { Route as AppIndexRouteImport } from './routes/app.index'
-import { Route as AppAdminRouteImport } from './routes/app.admin'
 import { Route as AppApiRouteImport } from './routes/app.api'
 import { Route as AppAssinaturasRouteImport } from './routes/app.assinaturas'
 import { Route as AppCheckoutRouteImport } from './routes/app.checkout'
@@ -54,11 +53,6 @@ const PortalRoute = PortalRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppAdminRoute = AppAdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => AppRoute,
 } as any)
 const AppApiRoute = AppApiRouteImport.update({
@@ -113,7 +107,6 @@ export interface FileRoutesByFullPath {
   '/demo': typeof DemoRoute
   '/docs': typeof DocsRoute
   '/portal': typeof PortalRoute
-  '/app/admin': typeof AppAdminRoute
   '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
@@ -130,7 +123,6 @@ export interface FileRoutesByTo {
   '/demo': typeof DemoRoute
   '/docs': typeof DocsRoute
   '/portal': typeof PortalRoute
-  '/app/admin': typeof AppAdminRoute
   '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
@@ -149,7 +141,6 @@ export interface FileRoutesById {
   '/demo': typeof DemoRoute
   '/docs': typeof DocsRoute
   '/portal': typeof PortalRoute
-  '/app/admin': typeof AppAdminRoute
   '/app/api': typeof AppApiRoute
   '/app/assinaturas': typeof AppAssinaturasRoute
   '/app/checkout': typeof AppCheckoutRoute
@@ -169,7 +160,6 @@ export interface FileRouteTypes {
     | '/demo'
     | '/docs'
     | '/portal'
-    | '/app/admin'
     | '/app/api'
     | '/app/assinaturas'
     | '/app/checkout'
@@ -186,7 +176,6 @@ export interface FileRouteTypes {
     | '/demo'
     | '/docs'
     | '/portal'
-    | '/app/admin'
     | '/app/api'
     | '/app/assinaturas'
     | '/app/checkout'
@@ -204,7 +193,6 @@ export interface FileRouteTypes {
     | '/demo'
     | '/docs'
     | '/portal'
-    | '/app/admin'
     | '/app/api'
     | '/app/assinaturas'
     | '/app/checkout'
@@ -268,13 +256,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/admin': {
-      id: '/app/admin'
-      path: '/admin'
-      fullPath: '/app/admin'
-      preLoaderRoute: typeof AppAdminRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/api': {
@@ -344,7 +325,6 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
-  AppAdminRoute: typeof AppAdminRoute
   AppApiRoute: typeof AppApiRoute
   AppAssinaturasRoute: typeof AppAssinaturasRoute
   AppCheckoutRoute: typeof AppCheckoutRoute
@@ -357,7 +337,6 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
-  AppAdminRoute: AppAdminRoute,
   AppApiRoute: AppApiRoute,
   AppAssinaturasRoute: AppAssinaturasRoute,
   AppCheckoutRoute: AppCheckoutRoute,
