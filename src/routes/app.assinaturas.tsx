@@ -61,7 +61,7 @@ function Assinaturas() {
       <h1 className="mt-2 text-[20px]">Assinaturas</h1>
 
       <section className="mt-6 grid gap-6 lg:grid-cols-3">
-        <div className="rounded-xl border border-border bg-surface-1 p-5">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">MRR estimado</div>
           <div className="mono mt-3 text-[28px]">{brl(mrr)}</div>
           <div className="mono mt-3 space-y-1 text-[12px] text-muted-foreground">
@@ -71,7 +71,7 @@ function Assinaturas() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-border bg-surface-1 p-5 lg:col-span-2">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5 lg:col-span-2">
           <div className="label-xs">Planos</div>
           <table className="mt-3 w-full text-[13px]">
             <tbody>
@@ -96,7 +96,7 @@ function Assinaturas() {
       </section>
 
       {/* Decisão de arquitetura */}
-      <section className="mt-6 rounded-xl border border-border bg-surface-1 p-6">
+      <section className="mt-6 rounded-xl border border-border bg-surface-1 elev p-6">
         <div className="label-xs">Decisão de arquitetura · modelo de renovação</div>
         <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-muted-foreground">
           As duas opções são mutuamente exclusivas por plano. A escolha define escopo de
@@ -160,7 +160,7 @@ function Assinaturas() {
         ))}
       </div>
 
-      <div className="mt-4 overflow-x-auto rounded-xl border border-border bg-surface-1">
+      <div className="mt-4 overflow-x-auto rounded-xl border border-border bg-surface-1 elev">
         <table className="w-full whitespace-nowrap text-[13px]">
           <thead>
             <tr className="label-xs border-b border-border text-left">

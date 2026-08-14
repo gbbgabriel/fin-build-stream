@@ -28,7 +28,7 @@ function CheckoutConfig() {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <section className="space-y-6">
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Identidade</div>
             <div className="mt-4 space-y-3 text-[13px]">
               <label className="block">
@@ -61,7 +61,7 @@ function CheckoutConfig() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Domínio próprio</div>
             <div className="mono mt-3 rounded-md border border-border bg-surface-2 px-3 py-2 text-[12px]">
               {tenant.domain}
@@ -72,7 +72,7 @@ function CheckoutConfig() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Pagamento</div>
             <div className="mt-4 space-y-4 text-[13px]">
               <label className="block">
@@ -108,7 +108,7 @@ function CheckoutConfig() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Campos solicitados ao pagador</div>
             <div className="mt-3 space-y-2 text-[13px]">
               {["Nome completo", "E-mail", "CPF (opcional)", "Campo personalizado"].map((f, i) => (
@@ -147,7 +147,7 @@ function CheckoutConfig() {
         {/* Preview ao vivo */}
         <section className="lg:sticky lg:top-20 lg:h-fit">
           <div className="label-xs mb-3">Preview ao vivo</div>
-          <div className="overflow-hidden rounded-xl border border-border bg-surface-1">
+          <div className="overflow-hidden rounded-xl border border-border bg-surface-1 elev">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
               <span className="mono text-[11px] text-faint">{tenant.domain}/pay/48211</span>
             </div>

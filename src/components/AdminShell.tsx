@@ -70,7 +70,7 @@ export function AdminShell() {
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-[13px] transition-colors",
                   active
-                    ? "bg-surface-3 text-foreground"
+                    ? "bg-surface-2 font-medium text-primary"
                     : "text-muted-foreground hover:bg-surface-2",
                 )}
               >

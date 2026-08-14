@@ -60,7 +60,7 @@ function AdminLojistas() {
         />
       </div>
 
-      <section className="mt-4 overflow-x-auto rounded-xl border border-border bg-surface-1">
+      <section className="mt-4 overflow-x-auto rounded-xl border border-border bg-surface-1 elev">
         <table className="w-full whitespace-nowrap text-[13px]">
           <thead>
             <tr className="label-xs border-b border-border text-left">

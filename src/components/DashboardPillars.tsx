@@ -44,7 +44,7 @@ function Pillar({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex min-w-0 flex-col rounded-xl border border-border bg-surface-1">
+    <section className="flex min-w-0 flex-col rounded-xl border border-border bg-surface-1 elev">
       <header className="flex items-baseline gap-2 border-b border-border px-4 py-4 sm:px-5">
         <span aria-hidden className="shrink-0 text-[14px]">
           {icon}

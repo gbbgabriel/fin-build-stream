@@ -82,7 +82,9 @@ export function AppShell() {
                 onClick={() => setMobileOpen(false)}
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-[13px] transition-colors",
-                  active ? "bg-surface-3 text-foreground" : "text-muted-foreground hover:bg-surface-2",
+                  active
+                    ? "bg-surface-2 font-medium text-primary"
+                    : "text-muted-foreground hover:bg-surface-2 hover:text-foreground",
                 )}
               >
                 <n.icon strokeWidth={1.5} className="size-4 shrink-0" />

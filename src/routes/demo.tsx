@@ -44,7 +44,7 @@ function Demo() {
               <Link
                 to={s.to}
                 params={s.params as never}
-                className="flex items-center gap-4 rounded-xl border border-border bg-surface-1 p-4 transition-colors hover:bg-surface-2"
+                className="flex items-center gap-4 rounded-xl border border-border bg-surface-1 elev p-4 transition-colors hover:bg-surface-2"
               >
                 <span className="mono grid size-8 shrink-0 place-items-center rounded-full border border-border text-[12px] text-muted-foreground">
                   {String(i + 1).padStart(2, "0")}

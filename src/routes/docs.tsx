@@ -152,7 +152,7 @@ function Docs() {
                 ["GET", "/v1/charges", "Lista cobranças com filtros e paginação"],
                 ["POST", "/v1/charges/:id/expire", "Expira manualmente uma cobrança pendente"],
               ].map(([m, p, d]) => (
-                <div key={p as string} className="flex items-center gap-3 rounded-md border border-border bg-surface-1 px-3 py-2.5">
+                <div key={p as string} className="flex items-center gap-3 rounded-md border border-border bg-surface-1 elev px-3 py-2.5">
                   <span className="mono w-12 shrink-0 text-[11px] uppercase text-faint">{m}</span>
                   <span className="mono text-[12px]">{p}</span>
                   <span className="ml-auto hidden text-[12px] text-muted-foreground sm:block">{d}</span>
@@ -189,7 +189,7 @@ function Docs() {
 
           <section id="erros" className="mt-14 scroll-mt-24">
             <h2 className="text-[18px]">Erros</h2>
-            <div className="mt-4 rounded-xl border border-border bg-surface-1">
+            <div className="mt-4 rounded-xl border border-border bg-surface-1 elev">
               {ERRORS.map(([c, k, d]) => (
                 <div key={k as string} className="grid grid-cols-1 gap-2 sm:grid-cols-[48px_150px_minmax(0,1fr)] sm:gap-3 border-b border-border p-3.5 text-[13px] last:border-0">
                   <span className="mono text-faint">{c}</span>
@@ -204,7 +204,7 @@ function Docs() {
             <h2 className="text-[18px]">SDKs</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-3 text-[13px]">
               {["@finbuild/node", "finbuild-python", "finbuild-php"].map((s) => (
-                <div key={s} className="rounded-xl border border-border bg-surface-1 p-4">
+                <div key={s} className="rounded-xl border border-border bg-surface-1 elev p-4">
                   <div className="mono text-[12px]">{s}</div>
                   <div className="mt-2 text-[12px] text-faint">v1.4.0</div>
                 </div>

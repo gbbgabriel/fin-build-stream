@@ -43,7 +43,7 @@ function Portal() {
         <div className="label-xs">Sua assinatura</div>
         <h1 className="mt-2 text-[24px] tracking-[-0.01em]">Plano Profissional</h1>
 
-        <section className="mt-6 rounded-xl border border-border bg-surface-1 p-6">
+        <section className="mt-6 rounded-xl border border-border bg-surface-1 elev p-6">
           <div className="grid gap-6 sm:grid-cols-3">
             <div>
               <div className="label-xs">Status</div>
@@ -96,7 +96,7 @@ function Portal() {
           )}
         </section>
 
-        <section className="mt-6 rounded-xl border border-border bg-surface-1">
+        <section className="mt-6 rounded-xl border border-border bg-surface-1 elev">
           <div className="label-xs border-b border-border p-4">Histórico de pagamentos</div>
           {HISTORY.map((h) => (
             <div key={h.hash} className="grid grid-cols-1 gap-2 sm:grid-cols-[110px_minmax(0,1fr)_auto] sm:items-center sm:gap-3 border-b border-border p-4 text-[13px] last:border-0">

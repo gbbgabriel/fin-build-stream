@@ -120,7 +120,7 @@ function Landing() {
             Ler a documentação <ArrowRight strokeWidth={1.5} className="size-4" />
           </Link>
         </div>
-        <pre className="mono overflow-x-auto rounded-xl border border-border bg-surface-1 p-5 text-[12px] leading-relaxed text-muted-foreground">
+        <pre className="mono overflow-x-auto rounded-xl border border-border bg-surface-1 elev p-5 text-[12px] leading-relaxed text-muted-foreground">
 {SNIPPET}
         </pre>
       </section>

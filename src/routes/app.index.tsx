@@ -233,7 +233,7 @@ function Dashboard() {
 
       {/* Bloco de volume */}
 
-      <section className="mt-6 rounded-xl border border-border bg-surface-1 p-6">
+      <section className="mt-6 rounded-xl border border-border bg-surface-1 elev p-6">
         {loading ? (
           <Skeleton className="h-[120px] w-full bg-surface-3" />
         ) : (
@@ -297,7 +297,7 @@ function Dashboard() {
 
       {/* Gráficos */}
       <section className="mt-6 grid gap-6 lg:grid-cols-3">
-        <div className="rounded-xl border border-border bg-surface-1 p-5 lg:col-span-2">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5 lg:col-span-2">
           <div className="label-xs">Faturamento ao longo do tempo</div>
           <div className="mt-4 h-[240px]">
             {loading ? (
@@ -335,7 +335,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-border bg-surface-1 p-5">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">Volume acumulado (all-time)</div>
           <div className="mt-4 h-[240px]">
             {loading ? (
@@ -356,7 +356,7 @@ function Dashboard() {
 
       <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         {/* Transações recentes */}
-        <div className="min-w-0 rounded-xl border border-border bg-surface-1">
+        <div className="min-w-0 rounded-xl border border-border bg-surface-1 elev">
           <div className="flex flex-wrap items-center gap-3 border-b border-border p-4">
             <div className="label-xs">Transações recentes</div>
             <div className="ml-auto flex flex-wrap gap-1 text-[12px]">
@@ -436,7 +436,7 @@ function Dashboard() {
 
         {/* Painéis laterais */}
         <div className="space-y-6">
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Últimas confirmações on-chain</div>
             <div className="mono mt-4 space-y-2 text-[12px]">
               {feed.map((t) => (
@@ -451,7 +451,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Saúde da rede Polygon</div>
             <dl className="mt-4 space-y-2 text-[13px]">
               {[
@@ -470,7 +470,7 @@ function Dashboard() {
             </p>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Top clientes por volume</div>
             <div className="mt-4 space-y-2 text-[13px]">
               {topCustomers.map(([name, v]) => (
@@ -482,7 +482,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Volume por dia da semana</div>
             <div className="mt-4 h-[140px]">
               <ResponsiveContainer width="100%" height="100%">
