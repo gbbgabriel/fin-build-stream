@@ -347,7 +347,7 @@ function Dashboard() {
 
       <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         {/* Transações recentes */}
-        <div className="rounded-xl border border-border bg-surface-1">
+        <div className="min-w-0 rounded-xl border border-border bg-surface-1">
           <div className="flex flex-wrap items-center gap-3 border-b border-border p-4">
             <div className="label-xs">Transações recentes</div>
             <div className="ml-auto flex flex-wrap gap-1 text-[12px]">
