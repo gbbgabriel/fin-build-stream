@@ -65,10 +65,19 @@ function Metric({
   pulse?: boolean;
 }) {
   return (
-    <div className="border-l border-border pl-4">
-      <div className="label-xs">{label}</div>
-      <div className={cn("mono mt-2 text-[20px]", pulse && "pulse-soft")}>{value}</div>
-      <div className="mt-1 flex items-center gap-2 text-[11px] text-muted-foreground">
+    <div className="min-w-0 border-l border-border pl-3 sm:pl-4">
+      <div className="label-xs truncate">{label}</div>
+      <div
+        className={cn(
+          "mono mt-2 truncate text-[15px] leading-tight sm:text-[17px] xl:text-[20px]",
+          pulse && "pulse-soft",
+        )}
+        title={value}
+      >
+        {value}
+      </div>
+      <div className="mt-1 flex min-w-0 flex-wrap items-center gap-x-2 text-[11px] text-muted-foreground">
+
         {delta !== undefined && (
           <span className="mono inline-flex items-center gap-0.5">
             {delta >= 0 ? (
