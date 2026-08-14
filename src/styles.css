@@ -30,7 +30,7 @@
   --color-faint: var(--text-faint);
   --color-accent: var(--surface-3);
   --color-accent-foreground: var(--text);
-  --color-destructive: var(--text);
+  --color-destructive: #df1b41;
   --color-destructive-foreground: var(--fg-invert);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
@@ -139,6 +139,14 @@
 
 @utility hairline {
   border: 1px solid var(--border);
+}
+
+@utility elev {
+  box-shadow: var(--shadow-card);
+}
+
+@utility elev-pop {
+  box-shadow: var(--shadow-pop);
 }
 
 @utility surface-noise {
