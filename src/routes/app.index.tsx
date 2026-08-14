@@ -202,7 +202,20 @@ function Dashboard() {
         </div>
       </div>
 
+      {loading ? (
+        <div className="mt-6 grid gap-4 lg:grid-cols-3">
+          {[0, 1, 2].map((i) => (
+            <Skeleton key={i} className="h-[420px] w-full bg-surface-3" />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-6">
+          <DashboardPillars m={metrics} period={period} />
+        </div>
+      )}
+
       {/* Bloco de volume */}
+
       <section className="mt-6 rounded-xl border border-border bg-surface-1 p-6">
         {loading ? (
           <Skeleton className="h-[120px] w-full bg-surface-3" />
