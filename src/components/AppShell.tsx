@@ -71,7 +71,7 @@ export function AppShell() {
           </button>
         </div>
 
-        <nav className="flex-1 space-y-0.5 p-2">
+        <nav className="flex-1 space-y-0.5 overflow-y-auto p-2">
           {NAV.map((n) => {
             const active = n.to === "/app" ? path === "/app" : path.startsWith(n.to);
             return (
@@ -79,13 +79,14 @@ export function AppShell() {
                 key={n.to}
                 to={n.to}
                 title={n.label}
+                onClick={() => setMobileOpen(false)}
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-[13px] transition-colors",
                   active ? "bg-surface-3 text-foreground" : "text-muted-foreground hover:bg-surface-2",
                 )}
               >
                 <n.icon strokeWidth={1.5} className="size-4 shrink-0" />
-                {wide && <span className="truncate">{n.label}</span>}
+                <span className={cn("truncate", !wide && "lg:hidden")}>{n.label}</span>
               </Link>
             );
           })}
@@ -96,12 +97,12 @@ export function AppShell() {
             className="flex items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2"
           >
             <FileCode2 strokeWidth={1.5} className="size-4 shrink-0" />
-            {wide && "Documentação"}
+            <span className={cn(!wide && "lg:hidden")}>Documentação</span>
           </Link>
           <button
             onClick={() => setWide((w) => !w)}
             aria-label={wide ? "Recolher menu" : "Expandir menu"}
-            className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2"
+            className="hidden w-full items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2 lg:flex"
           >
             <PanelLeft strokeWidth={1.5} className="size-4 shrink-0" />
             {wide && "Recolher"}
@@ -120,12 +121,19 @@ export function AppShell() {
             aria-hidden
           />
         )}
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-background/90 px-4 backdrop-blur">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-2 border-b border-border bg-background/90 px-3 backdrop-blur sm:gap-3 sm:px-4">
+          <button
+            onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menu"
+            className="shrink-0 rounded-md border border-border p-2 hover:bg-surface-2 lg:hidden"
+          >
+            <Menu strokeWidth={1.5} className="size-4" />
+          </button>
           <select
             aria-label="Selecionar organização"
             value={tenant.id}
             onChange={(e) => setTenantId(e.target.value)}
-            className="rounded-md border border-border bg-surface-2 px-2.5 py-1.5 text-[13px]"
+            className="min-w-0 max-w-[40vw] truncate rounded-md border border-border bg-surface-2 px-2.5 py-1.5 text-[13px] sm:max-w-none"
           >
             {TENANTS.map((t) => (
               <option key={t.id} value={t.id}>
@@ -133,6 +141,7 @@ export function AppShell() {
               </option>
             ))}
           </select>
+
 
           <div className="hidden items-center gap-2 rounded-md border border-border bg-surface-2 px-2.5 py-1.5 text-[13px] text-muted-foreground md:flex">
             <Search strokeWidth={1.5} className="size-3.5" />
