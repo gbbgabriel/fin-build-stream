@@ -34,21 +34,40 @@ const NAV = [
 
 export function AppShell() {
   const [wide, setWide] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { tenant, setTenantId, theme, toggleTheme, env, setEnv } = useApp();
   const path = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <div className="flex min-h-screen bg-background">
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-background/70 backdrop-blur-[2px] lg:hidden"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden
+        />
+      )}
       <aside
         className={cn(
-          "sticky top-0 flex h-screen shrink-0 flex-col border-r border-border bg-surface-1 transition-[width] duration-200",
-          wide ? "w-[240px]" : "w-[72px]",
+          "fixed inset-y-0 left-0 z-50 flex h-screen shrink-0 flex-col border-r border-border bg-surface-1 transition-transform duration-200 lg:sticky lg:top-0 lg:translate-x-0 lg:transition-[width]",
+          mobileOpen ? "translate-x-0" : "-translate-x-full",
+          wide ? "w-[240px]" : "w-[240px] lg:w-[72px]",
         )}
       >
         <div className="flex h-14 items-center gap-2 border-b border-border px-4">
           <span className="size-2.5 rounded-full bg-brand" aria-hidden />
-          {wide && <span className="text-[14px] font-medium tracking-[-0.02em]">FinBuild Pay</span>}
+          <span className={cn("text-[14px] font-medium tracking-[-0.02em]", !wide && "lg:hidden")}>
+            FinBuild Pay
+          </span>
+          <button
+            onClick={() => setMobileOpen(false)}
+            aria-label="Fechar menu"
+            className="ml-auto rounded-md border border-border p-1.5 lg:hidden"
+          >
+            <X strokeWidth={1.5} className="size-4" />
+          </button>
         </div>
+
         <nav className="flex-1 space-y-0.5 p-2">
           {NAV.map((n) => {
             const active = n.to === "/app" ? path === "/app" : path.startsWith(n.to);
