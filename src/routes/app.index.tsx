@@ -15,7 +15,7 @@ import {
 } from "recharts";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import { TRANSACTIONS, type Transaction } from "@/lib/mock/data";
-import { brl, crypto6, dt, time, trunc } from "@/lib/format";
+import { brl, crypto2, crypto6, dt, time, trunc } from "@/lib/format";
 const USD_BRL_LABEL = "1 USD = R$ 5,40";
 import { useApp, useSimulatedLoad } from "@/lib/store";
 import { StatusBadge } from "@/components/status";
@@ -65,10 +65,19 @@ function Metric({
   pulse?: boolean;
 }) {
   return (
-    <div className="border-l border-border pl-4">
-      <div className="label-xs">{label}</div>
-      <div className={cn("mono mt-2 text-[20px]", pulse && "pulse-soft")}>{value}</div>
-      <div className="mt-1 flex items-center gap-2 text-[11px] text-muted-foreground">
+    <div className="min-w-0 border-l border-border pl-3 sm:pl-4">
+      <div className="label-xs truncate">{label}</div>
+      <div
+        className={cn(
+          "mono mt-2 truncate text-[15px] leading-tight sm:text-[17px] xl:text-[20px]",
+          pulse && "pulse-soft",
+        )}
+        title={value}
+      >
+        {value}
+      </div>
+      <div className="mt-1 flex min-w-0 flex-wrap items-center gap-x-2 text-[11px] text-muted-foreground">
+
         {delta !== undefined && (
           <span className="mono inline-flex items-center gap-0.5">
             {delta >= 0 ? (
@@ -231,7 +240,7 @@ function Dashboard() {
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
             <div>
               <div className="label-xs">Total já transacionado (all-time)</div>
-              <div className="mono mt-3 text-[40px] leading-none sm:text-[56px]">
+              <div className="mono mt-3 break-all text-[28px] leading-none sm:text-[40px] xl:text-[52px]">
                 {crypto6(allTime).split(",")[0]}
                 <span className="text-[20px] text-muted-foreground">
                   ,{crypto6(allTime).split(",")[1]} USD
@@ -251,30 +260,30 @@ function Dashboard() {
                   <div className="hatch" style={{ width: `${(usdt / allTime) * 100}%` }} aria-hidden />
                   <div className="bg-surface-3" style={{ width: `${(usdc / allTime) * 100}%` }} aria-hidden />
                 </div>
-                <div className="mono mt-2 flex justify-between text-[11px] text-muted-foreground">
-                  <span>USDT {crypto6(usdt)} · {((usdt / allTime) * 100).toFixed(1)}%</span>
-                  <span>USDC {crypto6(usdc)} · {((usdc / allTime) * 100).toFixed(1)}%</span>
+                <div className="mono mt-2 flex flex-wrap justify-between gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+                  <span className="min-w-0 break-all">USDT {crypto2(usdt)} · {((usdt / allTime) * 100).toFixed(1)}%</span>
+                  <span className="min-w-0 break-all">USDC {crypto2(usdc)} · {((usdc / allTime) * 100).toFixed(1)}%</span>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-y-6">
+            <div className="grid min-w-0 grid-cols-2 gap-x-2 gap-y-6">
               <Metric
                 label={`Volume · ${period}`}
-                value={crypto6(periodVol)}
+                value={crypto2(periodVol)}
                 delta={delta}
                 sub="vs. período anterior"
               />
-              <Metric label="Confirmado hoje" value={crypto6(today)} sub="USD on-chain" />
+              <Metric label="Confirmado hoje" value={crypto2(today)} sub="USD on-chain" />
               <Metric
                 label="Pendente agora"
-                value={crypto6(pendingNow)}
+                value={crypto2(pendingNow)}
                 sub="aguardando confirmação"
                 pulse={pendingNow > 0}
               />
               <Metric
                 label="Ticket médio"
-                value={crypto6(confirmed.length ? allTime / confirmed.length : 0)}
+                value={crypto2(confirmed.length ? allTime / confirmed.length : 0)}
                 sub={`${inPeriod.length} transações no período`}
               />
             </div>
