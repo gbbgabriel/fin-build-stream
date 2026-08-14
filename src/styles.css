@@ -22,7 +22,7 @@
   --color-popover: var(--surface-2);
   --color-popover-foreground: var(--text);
   --color-primary: var(--accent);
-  --color-primary-foreground: var(--fg-invert);
+  --color-primary-foreground: var(--accent-foreground);
   --color-secondary: var(--surface-2);
   --color-secondary-foreground: var(--text);
   --color-muted: var(--surface-2);
@@ -42,7 +42,7 @@
   --color-sidebar: var(--surface-1);
   --color-sidebar-foreground: var(--text);
   --color-sidebar-primary: var(--accent);
-  --color-sidebar-primary-foreground: var(--fg-invert);
+  --color-sidebar-primary-foreground: var(--accent-foreground);
   --color-sidebar-accent: var(--surface-3);
   --color-sidebar-accent-foreground: var(--text);
   --color-sidebar-border: var(--border);
@@ -66,6 +66,7 @@
   --fg-invert: #ffffff;
   --accent: #635bff;
   --accent-brand: #635bff;
+  --accent-foreground: #ffffff;
   --shadow-card: 0 1px 1px rgba(26, 31, 54, 0.04), 0 2px 6px rgba(26, 31, 54, 0.06);
   --shadow-pop: 0 2px 5px rgba(26, 31, 54, 0.06), 0 12px 28px rgba(26, 31, 54, 0.1);
   --success: #0e9f6e;
@@ -86,6 +87,7 @@
   --fg-invert: #ffffff;
   --accent: #7a73ff;
   --accent-brand: #8b85ff;
+  --accent-foreground: #ffffff;
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-pop: 0 12px 30px rgba(0, 0, 0, 0.55);
   --success: #34d399;
