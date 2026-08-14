@@ -20,8 +20,11 @@ const USD_BRL_LABEL = "1 USD = R$ 5,40";
 import { useApp, useSimulatedLoad } from "@/lib/store";
 import { StatusBadge } from "@/components/status";
 import { TransactionDetailDrawer } from "@/components/TransactionDetailDrawer";
+import { DashboardPillars } from "@/components/DashboardPillars";
+import { buildDashboardMetrics } from "@/lib/dashboard-metrics";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+
 
 export const Route = createFileRoute("/app/")({
   head: () => ({
@@ -91,6 +94,11 @@ function Dashboard() {
 
   const all = TRANSACTIONS[tenant.id] ?? [];
   const confirmed = useMemo(() => all.filter((t) => t.status === "confirmed"), [all]);
+  const metrics = useMemo(
+    () => buildDashboardMetrics(tenant.id, WINDOW_MS[period]),
+    [tenant.id, period],
+  );
+
 
   const allTime = useMemo(
     () => confirmed.reduce((s, t) => s + t.amount, 0),
@@ -202,7 +210,20 @@ function Dashboard() {
         </div>
       </div>
 
+      {loading ? (
+        <div className="mt-6 grid gap-4 lg:grid-cols-3">
+          {[0, 1, 2].map((i) => (
+            <Skeleton key={i} className="h-[420px] w-full bg-surface-3" />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-6">
+          <DashboardPillars m={metrics} period={period} />
+        </div>
+      )}
+
       {/* Bloco de volume */}
+
       <section className="mt-6 rounded-xl border border-border bg-surface-1 p-6">
         {loading ? (
           <Skeleton className="h-[120px] w-full bg-surface-3" />
