@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
+import { PaymentMethodsMatrix } from "@/components/PaymentMethodsMatrix";
 import { useApp } from "@/lib/store";
 
 export const Route = createFileRoute("/app/checkout")({
@@ -18,7 +19,7 @@ function CheckoutConfig() {
   const { tenant } = useApp();
   const [name, setName] = useState(tenant.name);
   const [accent, setAccent] = useState(tenant.accent);
-  const [currencies, setCurrencies] = useState<"ambas" | "USDC" | "USDT">("ambas");
+  const [currencies, setCurrencies] = useState<string[]>(["USDC", "USDT"]);
   const [quoteMin, setQuoteMin] = useState("15");
 
   return (
@@ -76,18 +77,6 @@ function CheckoutConfig() {
             <div className="label-xs">Pagamento</div>
             <div className="mt-4 space-y-4 text-[13px]">
               <label className="block">
-                <span className="label-xs">Moedas aceitas</span>
-                <select
-                  value={currencies}
-                  onChange={(e) => setCurrencies(e.target.value as typeof currencies)}
-                  className="mt-1.5 w-full rounded-md border border-border bg-surface-2 px-3 py-2"
-                >
-                  <option value="ambas">USDT e USDC</option>
-                  <option value="USDC">Somente USDC</option>
-                  <option value="USDT">Somente USDT</option>
-                </select>
-              </label>
-              <label className="block">
                 <span className="label-xs">Validade da cotação (minutos)</span>
                 <input
                   value={quoteMin}
@@ -107,6 +96,8 @@ function CheckoutConfig() {
               <div className="mono text-[13px]">Polygon PoS · fixa</div>
             </div>
           </div>
+
+          <PaymentMethodsMatrix currencies={currencies} setCurrencies={setCurrencies} />
 
           <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Campos solicitados ao pagador</div>
@@ -163,13 +154,13 @@ function CheckoutConfig() {
               </div>
               <div className="label-xs mt-8">Resumo do pedido</div>
               <div className="mt-2 text-[16px]">Plano Profissional</div>
-              <div className="mono mt-6 text-[28px]">64,629630 <span className="text-[13px] text-muted-foreground">{currencies === "USDT" ? "USDT" : "USDC"}</span></div>
+              <div className="mono mt-6 text-[28px]">64,629630 <span className="text-[13px] text-muted-foreground">{currencies[0] ?? "USDC"}</span></div>
               <div className="mt-6 h-1 w-full overflow-hidden rounded-full bg-surface-3">
                 <div className="h-full w-2/3" style={{ background: accent }} />
               </div>
               <div className="mono mt-2 text-[11px] text-faint">Cotação válida por {quoteMin}:00</div>
               <div className="mt-6 grid gap-2 sm:grid-cols-2">
-                {(currencies === "ambas" ? ["USDC", "USDT"] : [currencies]).map((c) => (
+                {(currencies.length ? currencies : ["USDC"]).map((c) => (
                   <div key={c} className="rounded-xl border border-border p-4">
                     <div className="mono text-[14px]">{c}</div>
                     <div className="mt-2 inline-block rounded-full border border-border bg-surface-3 px-2 py-0.5 text-[11px] uppercase tracking-[0.08em]">
