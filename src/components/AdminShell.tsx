@@ -5,6 +5,7 @@ import {
   BarChart3,
   Building2,
   LayoutDashboard,
+  Menu,
   PanelLeft,
   Receipt,
   ShieldCheck,
@@ -23,24 +24,40 @@ const NAV = [
 
 export function AdminShell() {
   const [wide, setWide] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <div className="flex min-h-screen bg-background">
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-background/70 backdrop-blur-[2px] lg:hidden"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden
+        />
+      )}
       <aside
         className={cn(
-          "sticky top-0 flex h-screen shrink-0 flex-col border-r border-border bg-surface-1 transition-[width] duration-200",
-          wide ? "w-[232px]" : "w-[72px]",
+          "fixed inset-y-0 left-0 z-50 flex h-screen shrink-0 flex-col border-r border-border bg-surface-1 transition-transform duration-200 lg:sticky lg:top-0 lg:translate-x-0 lg:transition-[width]",
+          mobileOpen ? "translate-x-0" : "-translate-x-full",
+          wide ? "w-[232px]" : "w-[232px] lg:w-[72px]",
         )}
       >
         <div className="flex h-14 items-center gap-2.5 border-b border-border px-4">
           <ShieldCheck strokeWidth={1.5} className="size-4 shrink-0" />
-          {wide && (
-            <span className="truncate text-[13px] tracking-[-0.02em]">Console interno</span>
-          )}
+          <span className={cn("truncate text-[13px] tracking-[-0.02em]", !wide && "lg:hidden")}>
+            Console interno
+          </span>
+          <button
+            onClick={() => setMobileOpen(false)}
+            aria-label="Fechar menu"
+            className="ml-auto rounded-md border border-border p-1.5 lg:hidden"
+          >
+            <X strokeWidth={1.5} className="size-4" />
+          </button>
         </div>
-        <nav className="flex-1 space-y-0.5 p-2">
-          {wide && <div className="label-xs px-3 py-2">Plataforma</div>}
+        <nav className="flex-1 space-y-0.5 overflow-y-auto p-2">
+          <div className={cn("label-xs px-3 py-2", !wide && "lg:hidden")}>Plataforma</div>
           {NAV.map((n) => {
             const active =
               "exact" in n && n.exact ? path === n.to : path.startsWith(n.to);
@@ -49,6 +66,7 @@ export function AdminShell() {
                 key={n.to}
                 to={n.to}
                 title={n.label}
+                onClick={() => setMobileOpen(false)}
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-[13px] transition-colors",
                   active
@@ -57,7 +75,7 @@ export function AdminShell() {
                 )}
               >
                 <n.icon strokeWidth={1.5} className="size-4 shrink-0" />
-                {wide && <span className="truncate">{n.label}</span>}
+                <span className={cn("truncate", !wide && "lg:hidden")}>{n.label}</span>
               </Link>
             );
           })}
@@ -68,12 +86,12 @@ export function AdminShell() {
             className="flex items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2"
           >
             <ArrowLeft strokeWidth={1.5} className="size-4 shrink-0" />
-            {wide && "Dashboard do lojista"}
+            <span className={cn(!wide && "lg:hidden")}>Dashboard do lojista</span>
           </Link>
           <button
             onClick={() => setWide((w) => !w)}
             aria-label={wide ? "Recolher menu" : "Expandir menu"}
-            className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2"
+            className="hidden w-full items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2 lg:flex"
           >
             <PanelLeft strokeWidth={1.5} className="size-4 shrink-0" />
             {wide && "Recolher"}
@@ -82,13 +100,21 @@ export function AdminShell() {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-background/90 px-6 backdrop-blur">
-          <span className="text-[14px] tracking-[-0.02em]">FinBuild Pay</span>
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-background/90 px-4 backdrop-blur sm:px-6">
+          <button
+            onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menu"
+            className="shrink-0 rounded-md border border-border p-2 hover:bg-surface-2 lg:hidden"
+          >
+            <Menu strokeWidth={1.5} className="size-4" />
+          </button>
+          <span className="truncate text-[14px] tracking-[-0.02em]">FinBuild Pay</span>
           <span className="label-xs rounded-full border border-border px-2 py-0.5">admin</span>
-          <div className="mono ml-auto grid size-8 place-items-center rounded-full border border-border bg-surface-2 text-[11px]">
+          <div className="mono ml-auto grid size-8 shrink-0 place-items-center rounded-full border border-border bg-surface-2 text-[11px]">
             AD
           </div>
         </header>
+
         <main className="min-w-0 flex-1">
           <Outlet />
         </main>
