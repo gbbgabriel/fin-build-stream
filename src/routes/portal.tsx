@@ -99,7 +99,7 @@ function Portal() {
         <section className="mt-6 rounded-xl border border-border bg-surface-1">
           <div className="label-xs border-b border-border p-4">Histórico de pagamentos</div>
           {HISTORY.map((h) => (
-            <div key={h.hash} className="grid grid-cols-[110px_1fr_auto] items-center gap-3 border-b border-border p-4 text-[13px] last:border-0">
+            <div key={h.hash} className="grid grid-cols-1 gap-2 sm:grid-cols-[110px_minmax(0,1fr)_auto] sm:items-center sm:gap-3 border-b border-border p-4 text-[13px] last:border-0">
               <span className="mono text-[12px] text-muted-foreground">{h.when}</span>
               <span>
                 <span className="mono">{brl(h.brlv)}</span>

@@ -14,7 +14,10 @@ import {
   Wallet,
   Search,
   Layers,
+  Menu,
+  X,
 } from "lucide-react";
+
 import { useState } from "react";
 import { useApp } from "@/lib/store";
 import { TENANTS } from "@/lib/mock/data";
@@ -34,22 +37,41 @@ const NAV = [
 
 export function AppShell() {
   const [wide, setWide] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { tenant, setTenantId, theme, toggleTheme, env, setEnv } = useApp();
   const path = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <div className="flex min-h-screen bg-background">
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-background/70 backdrop-blur-[2px] lg:hidden"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden
+        />
+      )}
       <aside
         className={cn(
-          "sticky top-0 flex h-screen shrink-0 flex-col border-r border-border bg-surface-1 transition-[width] duration-200",
-          wide ? "w-[240px]" : "w-[72px]",
+          "fixed inset-y-0 left-0 z-50 flex h-screen shrink-0 flex-col border-r border-border bg-surface-1 transition-transform duration-200 lg:sticky lg:top-0 lg:translate-x-0 lg:transition-[width]",
+          mobileOpen ? "translate-x-0" : "-translate-x-full",
+          wide ? "w-[240px]" : "w-[240px] lg:w-[72px]",
         )}
       >
         <div className="flex h-14 items-center gap-2 border-b border-border px-4">
           <span className="size-2.5 rounded-full bg-brand" aria-hidden />
-          {wide && <span className="text-[14px] font-medium tracking-[-0.02em]">FinBuild Pay</span>}
+          <span className={cn("text-[14px] font-medium tracking-[-0.02em]", !wide && "lg:hidden")}>
+            FinBuild Pay
+          </span>
+          <button
+            onClick={() => setMobileOpen(false)}
+            aria-label="Fechar menu"
+            className="ml-auto rounded-md border border-border p-1.5 lg:hidden"
+          >
+            <X strokeWidth={1.5} className="size-4" />
+          </button>
         </div>
-        <nav className="flex-1 space-y-0.5 p-2">
+
+        <nav className="flex-1 space-y-0.5 overflow-y-auto p-2">
           {NAV.map((n) => {
             const active = n.to === "/app" ? path === "/app" : path.startsWith(n.to);
             return (
@@ -57,13 +79,14 @@ export function AppShell() {
                 key={n.to}
                 to={n.to}
                 title={n.label}
+                onClick={() => setMobileOpen(false)}
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-[13px] transition-colors",
                   active ? "bg-surface-3 text-foreground" : "text-muted-foreground hover:bg-surface-2",
                 )}
               >
                 <n.icon strokeWidth={1.5} className="size-4 shrink-0" />
-                {wide && <span className="truncate">{n.label}</span>}
+                <span className={cn("truncate", !wide && "lg:hidden")}>{n.label}</span>
               </Link>
             );
           })}
@@ -74,12 +97,12 @@ export function AppShell() {
             className="flex items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2"
           >
             <FileCode2 strokeWidth={1.5} className="size-4 shrink-0" />
-            {wide && "Documentação"}
+            <span className={cn(!wide && "lg:hidden")}>Documentação</span>
           </Link>
           <button
             onClick={() => setWide((w) => !w)}
             aria-label={wide ? "Recolher menu" : "Expandir menu"}
-            className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2"
+            className="hidden w-full items-center gap-3 rounded-md px-3 py-2 text-[13px] text-muted-foreground hover:bg-surface-2 lg:flex"
           >
             <PanelLeft strokeWidth={1.5} className="size-4 shrink-0" />
             {wide && "Recolher"}
@@ -98,12 +121,19 @@ export function AppShell() {
             aria-hidden
           />
         )}
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-background/90 px-4 backdrop-blur">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-2 border-b border-border bg-background/90 px-3 backdrop-blur sm:gap-3 sm:px-4">
+          <button
+            onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menu"
+            className="shrink-0 rounded-md border border-border p-2 hover:bg-surface-2 lg:hidden"
+          >
+            <Menu strokeWidth={1.5} className="size-4" />
+          </button>
           <select
             aria-label="Selecionar organização"
             value={tenant.id}
             onChange={(e) => setTenantId(e.target.value)}
-            className="rounded-md border border-border bg-surface-2 px-2.5 py-1.5 text-[13px]"
+            className="min-w-0 max-w-[40vw] truncate rounded-md border border-border bg-surface-2 px-2.5 py-1.5 text-[13px] sm:max-w-none"
           >
             {TENANTS.map((t) => (
               <option key={t.id} value={t.id}>
@@ -112,14 +142,15 @@ export function AppShell() {
             ))}
           </select>
 
+
           <div className="hidden items-center gap-2 rounded-md border border-border bg-surface-2 px-2.5 py-1.5 text-[13px] text-muted-foreground md:flex">
             <Search strokeWidth={1.5} className="size-3.5" />
             Buscar
             <kbd className="mono ml-6 rounded border border-border px-1 text-[11px]">⌘K</kbd>
           </div>
 
-          <div className="ml-auto flex items-center gap-2">
-            <div className="flex rounded-md border border-border p-0.5 text-[11px] uppercase tracking-[0.08em]">
+          <div className="ml-auto flex shrink-0 items-center gap-2">
+            <div className="hidden rounded-md border border-border p-0.5 text-[11px] uppercase tracking-[0.08em] sm:flex">
               {(["teste", "producao"] as const).map((e) => (
                 <button
                   key={e}
@@ -134,6 +165,12 @@ export function AppShell() {
               ))}
             </div>
             <button
+              onClick={() => setEnv(env === "teste" ? "producao" : "teste")}
+              className="rounded-md border border-border px-2 py-1.5 text-[11px] uppercase tracking-[0.08em] sm:hidden"
+            >
+              {env === "teste" ? "Teste" : "Prod"}
+            </button>
+            <button
               onClick={toggleTheme}
               aria-label="Alternar tema"
               className="rounded-md border border-border p-2 hover:bg-surface-2"
@@ -144,10 +181,11 @@ export function AppShell() {
                 <Moon strokeWidth={1.5} className="size-4" />
               )}
             </button>
-            <div className="mono grid size-8 place-items-center rounded-full border border-border bg-surface-2 text-[11px]">
+            <div className="mono hidden size-8 place-items-center rounded-full border border-border bg-surface-2 text-[11px] sm:grid">
               RN
             </div>
           </div>
+
         </header>
 
         <main className="min-w-0 flex-1">
