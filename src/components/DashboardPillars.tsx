@@ -218,19 +218,19 @@ export function DashboardPillars({
       <Pillar step="03" icon="⚡" title="Operação" question="O que está acontecendo agora?">
         <div className="space-y-2">
           <div className="flex items-center gap-3 rounded-lg border border-border-strong bg-surface-2 px-3 py-2.5">
-            <span aria-hidden className="shrink-0">🔴</span>
+            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-destructive" />
             <span className="min-w-0 text-[13px]">
               <span className="mono">{m.failedToday}</span> cobranças falharam hoje
             </span>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-border bg-surface-2 px-3 py-2.5">
-            <span aria-hidden className="shrink-0">🟡</span>
+            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-warning" />
             <span className="min-w-0 text-[13px]">
               <span className="mono">{m.inadimplentes}</span> assinaturas em inadimplência
             </span>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-border bg-surface-2 px-3 py-2.5">
-            <span aria-hidden className="shrink-0">🟢</span>
+            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-success" />
             <span className="min-w-0 text-[13px]">
               <span className="mono">{m.nextCharges24h}</span> cobranças previstas para amanhã
             </span>
