@@ -20,8 +20,11 @@ const USD_BRL_LABEL = "1 USD = R$ 5,40";
 import { useApp, useSimulatedLoad } from "@/lib/store";
 import { StatusBadge } from "@/components/status";
 import { TransactionDetailDrawer } from "@/components/TransactionDetailDrawer";
+import { DashboardPillars } from "@/components/DashboardPillars";
+import { buildDashboardMetrics } from "@/lib/dashboard-metrics";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+
 
 export const Route = createFileRoute("/app/")({
   head: () => ({
@@ -91,6 +94,11 @@ function Dashboard() {
 
   const all = TRANSACTIONS[tenant.id] ?? [];
   const confirmed = useMemo(() => all.filter((t) => t.status === "confirmed"), [all]);
+  const metrics = useMemo(
+    () => buildDashboardMetrics(tenant.id, WINDOW_MS[period]),
+    [tenant.id, period],
+  );
+
 
   const allTime = useMemo(
     () => confirmed.reduce((s, t) => s + t.amount, 0),
