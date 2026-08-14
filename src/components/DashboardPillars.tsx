@@ -1,4 +1,5 @@
-import { ArrowDown, ArrowUp, Minus } from "lucide-react";
+import { Activity, ArrowDown, ArrowUp, Minus, Users, Wallet } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { DashboardMetrics } from "@/lib/dashboard-metrics";
 import { brl } from "@/lib/format";
@@ -103,7 +104,7 @@ export function DashboardPillars({
   return (
     <div className="grid min-w-0 gap-4 lg:grid-cols-3">
       {/* 1 · Receita */}
-      <Pillar step="01" icon="💰" title="Receita" question="Quanto estou fazendo?">
+      <Pillar step="01" icon={Wallet} title="Receita" question="Quanto estou fazendo?">
         <div className="label-xs">MRR atual</div>
         <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className="mono text-[20px] leading-none sm:text-[24px] xl:text-[26px]">
@@ -156,7 +157,7 @@ export function DashboardPillars({
       </Pillar>
 
       {/* 2 · Base */}
-      <Pillar step="02" icon="👥" title="Base" question="De quem estou ganhando?">
+      <Pillar step="02" icon={Users} title="Base" question="De quem estou ganhando?">
         <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4">
           <div className="min-w-0">
             <div className="label-xs truncate">Assinantes ativos</div>
@@ -213,7 +214,7 @@ export function DashboardPillars({
       </Pillar>
 
       {/* 3 · Operação */}
-      <Pillar step="03" icon="⚡" title="Operação" question="O que está acontecendo agora?">
+      <Pillar step="03" icon={Activity} title="Operação" question="O que está acontecendo agora?">
         <div className="space-y-2">
           <div className="flex items-center gap-3 rounded-lg border border-border-strong bg-surface-2 px-3 py-2.5">
             <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-destructive" />
