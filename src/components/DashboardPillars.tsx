@@ -44,18 +44,18 @@ function Pillar({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col rounded-xl border border-border bg-surface-1">
-      <header className="flex items-baseline gap-2 border-b border-border px-5 py-4">
-        <span aria-hidden className="text-[14px]">
+    <section className="flex min-w-0 flex-col rounded-xl border border-border bg-surface-1">
+      <header className="flex items-baseline gap-2 border-b border-border px-4 py-4 sm:px-5">
+        <span aria-hidden className="shrink-0 text-[14px]">
           {icon}
         </span>
-        <div>
+        <div className="min-w-0">
           <div className="text-[14px]">{title}</div>
-          <div className="text-[12px] text-faint">{question}</div>
+          <div className="truncate text-[12px] text-faint">{question}</div>
         </div>
-        <span className="mono label-xs ml-auto">{step}</span>
+        <span className="mono label-xs ml-auto shrink-0">{step}</span>
       </header>
-      <div className="flex-1 p-5">{children}</div>
+      <div className="min-w-0 flex-1 p-4 sm:p-5">{children}</div>
     </section>
   );
 }
@@ -70,22 +70,22 @@ function Row({
   tone?: "alert" | "warn" | "ok";
 }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 py-1.5">
-      <span className="flex items-center gap-2 text-[12px] text-muted-foreground">
+    <div className="flex items-baseline justify-between gap-3 py-1.5">
+      <span className="flex min-w-0 items-center gap-2 text-[12px] text-muted-foreground">
         {tone && (
           <span
             aria-hidden
             className={cn(
-              "size-1.5 rounded-full",
+              "size-1.5 shrink-0 rounded-full",
               tone === "alert" && "bg-foreground",
               tone === "warn" && "bg-muted-foreground",
               tone === "ok" && "bg-brand",
             )}
           />
         )}
-        {k}
+        <span className="truncate">{k}</span>
       </span>
-      <span className="mono text-[13px]">{v}</span>
+      <span className="mono shrink-0 text-[12px] whitespace-nowrap sm:text-[13px]">{v}</span>
     </div>
   );
 }
@@ -101,12 +101,14 @@ export function DashboardPillars({
   const topMethod = m.byMethod[0];
 
   return (
-    <div className="grid gap-4 lg:grid-cols-3">
+    <div className="grid min-w-0 gap-4 lg:grid-cols-3">
       {/* 1 · Receita */}
       <Pillar step="01" icon="💰" title="Receita" question="Quanto estou fazendo?">
         <div className="label-xs">MRR atual</div>
-        <div className="mt-1 flex items-baseline gap-2">
-          <span className="mono text-[28px] leading-none">{brl(m.mrr)}</span>
+        <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          <span className="mono text-[20px] leading-none sm:text-[24px] xl:text-[26px]">
+            {brl(m.mrr)}
+          </span>
           <Delta value={m.mrrDelta} />
         </div>
         <div className="mt-1 text-[11px] text-faint">vs. mês anterior ({brl(m.mrrPrev)})</div>
@@ -155,17 +157,17 @@ export function DashboardPillars({
 
       {/* 2 · Base */}
       <Pillar step="02" icon="👥" title="Base" question="De quem estou ganhando?">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <div className="label-xs">Assinantes ativos</div>
-            <div className="mono mt-1 text-[28px] leading-none">
+        <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4">
+          <div className="min-w-0">
+            <div className="label-xs truncate">Assinantes ativos</div>
+            <div className="mono mt-1 text-[20px] leading-none sm:text-[24px] xl:text-[26px]">
               {m.active.toLocaleString("pt-BR")}
             </div>
             <div className="mt-1 text-[11px] text-faint">+{m.novas} novas em 30d</div>
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="label-xs">Churn</div>
-            <div className="mono mt-1 flex items-baseline gap-2 text-[28px] leading-none">
+            <div className="mono mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[20px] leading-none sm:text-[24px] xl:text-[26px]">
               {m.churn.toFixed(1)}%
               <Delta value={-m.churn / 4} invert />
             </div>
@@ -188,9 +190,9 @@ export function DashboardPillars({
             const share = m.active ? (p.count / m.active) * 100 : 0;
             return (
               <div key={p.name}>
-                <div className="flex justify-between text-[12px]">
+                <div className="flex items-baseline justify-between gap-2 text-[12px]">
                   <span className="truncate text-muted-foreground">{p.name}</span>
-                  <span className="mono">
+                  <span className="mono shrink-0 whitespace-nowrap">
                     {p.count} · {share.toFixed(0)}%
                   </span>
                 </div>
@@ -214,20 +216,20 @@ export function DashboardPillars({
       <Pillar step="03" icon="⚡" title="Operação" question="O que está acontecendo agora?">
         <div className="space-y-2">
           <div className="flex items-center gap-3 rounded-lg border border-border-strong bg-surface-2 px-3 py-2.5">
-            <span aria-hidden>🔴</span>
-            <span className="text-[13px]">
+            <span aria-hidden className="shrink-0">🔴</span>
+            <span className="min-w-0 text-[13px]">
               <span className="mono">{m.failedToday}</span> cobranças falharam hoje
             </span>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-border bg-surface-2 px-3 py-2.5">
-            <span aria-hidden>🟡</span>
-            <span className="text-[13px]">
+            <span aria-hidden className="shrink-0">🟡</span>
+            <span className="min-w-0 text-[13px]">
               <span className="mono">{m.inadimplentes}</span> assinaturas em inadimplência
             </span>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-border bg-surface-2 px-3 py-2.5">
-            <span aria-hidden>🟢</span>
-            <span className="text-[13px]">
+            <span aria-hidden className="shrink-0">🟢</span>
+            <span className="min-w-0 text-[13px]">
               <span className="mono">{m.nextCharges24h}</span> cobranças previstas para amanhã
             </span>
           </div>
