@@ -14,7 +14,10 @@ import {
   Wallet,
   Search,
   Layers,
+  Menu,
+  X,
 } from "lucide-react";
+
 import { useState } from "react";
 import { useApp } from "@/lib/store";
 import { TENANTS } from "@/lib/mock/data";
