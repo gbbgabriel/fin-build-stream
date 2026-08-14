@@ -109,7 +109,7 @@ function ApiPage() {
       <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <div className="min-w-0 overflow-x-auto rounded-xl border border-border bg-surface-1">
           <div className="label-xs border-b border-border p-4">Log de entregas</div>
-          <table className="w-full text-[13px]">
+          <table className="w-full whitespace-nowrap text-[13px]">
             <tbody>
               {DELIVERIES.map((d) => (
                 <tr key={d.event} className="border-b border-border last:border-0">

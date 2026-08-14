@@ -378,7 +378,7 @@ function Dashboard() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-[13px]">
+            <table className="w-full whitespace-nowrap text-[13px]">
               <thead>
                 <tr className="label-xs border-b border-border text-left">
                   <th className="px-4 py-2 font-normal">Data</th>
