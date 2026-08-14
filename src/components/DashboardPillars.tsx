@@ -1,4 +1,5 @@
-import { ArrowDown, ArrowUp, Minus } from "lucide-react";
+import { Activity, ArrowDown, ArrowUp, Minus, Users, Wallet } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { DashboardMetrics } from "@/lib/dashboard-metrics";
 import { brl } from "@/lib/format";
@@ -32,13 +33,13 @@ function Delta({ value, invert }: { value: number; invert?: boolean }) {
 
 function Pillar({
   step,
-  icon,
+  icon: Icon,
   title,
   question,
   children,
 }: {
   step: string;
-  icon: string;
+  icon: LucideIcon;
   title: string;
   question: string;
   children: React.ReactNode;
@@ -46,9 +47,7 @@ function Pillar({
   return (
     <section className="flex min-w-0 flex-col rounded-xl border border-border bg-surface-1 elev">
       <header className="flex items-baseline gap-2 border-b border-border px-4 py-4 sm:px-5">
-        <span aria-hidden className="shrink-0 text-[14px]">
-          {icon}
-        </span>
+        <Icon aria-hidden strokeWidth={1.5} className="size-4 shrink-0 translate-y-0.5 text-muted-foreground" />
         <div className="min-w-0">
           <div className="text-[14px]">{title}</div>
           <div className="truncate text-[12px] text-faint">{question}</div>
@@ -105,7 +104,7 @@ export function DashboardPillars({
   return (
     <div className="grid min-w-0 gap-4 lg:grid-cols-3">
       {/* 1 · Receita */}
-      <Pillar step="01" icon="💰" title="Receita" question="Quanto estou fazendo?">
+      <Pillar step="01" icon={Wallet} title="Receita" question="Quanto estou fazendo?">
         <div className="label-xs">MRR atual</div>
         <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
           <span className="mono text-[20px] leading-none sm:text-[24px] xl:text-[26px]">
@@ -158,7 +157,7 @@ export function DashboardPillars({
       </Pillar>
 
       {/* 2 · Base */}
-      <Pillar step="02" icon="👥" title="Base" question="De quem estou ganhando?">
+      <Pillar step="02" icon={Users} title="Base" question="De quem estou ganhando?">
         <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4">
           <div className="min-w-0">
             <div className="label-xs truncate">Assinantes ativos</div>
@@ -215,22 +214,22 @@ export function DashboardPillars({
       </Pillar>
 
       {/* 3 · Operação */}
-      <Pillar step="03" icon="⚡" title="Operação" question="O que está acontecendo agora?">
+      <Pillar step="03" icon={Activity} title="Operação" question="O que está acontecendo agora?">
         <div className="space-y-2">
           <div className="flex items-center gap-3 rounded-lg border border-border-strong bg-surface-2 px-3 py-2.5">
-            <span aria-hidden className="shrink-0">🔴</span>
+            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-destructive" />
             <span className="min-w-0 text-[13px]">
               <span className="mono">{m.failedToday}</span> cobranças falharam hoje
             </span>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-border bg-surface-2 px-3 py-2.5">
-            <span aria-hidden className="shrink-0">🟡</span>
+            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-warning" />
             <span className="min-w-0 text-[13px]">
               <span className="mono">{m.inadimplentes}</span> assinaturas em inadimplência
             </span>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-border bg-surface-2 px-3 py-2.5">
-            <span aria-hidden className="shrink-0">🟢</span>
+            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-success" />
             <span className="min-w-0 text-[13px]">
               <span className="mono">{m.nextCharges24h}</span> cobranças previstas para amanhã
             </span>
