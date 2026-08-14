@@ -149,8 +149,8 @@ export function AppShell() {
             <kbd className="mono ml-6 rounded border border-border px-1 text-[11px]">⌘K</kbd>
           </div>
 
-          <div className="ml-auto flex items-center gap-2">
-            <div className="flex rounded-md border border-border p-0.5 text-[11px] uppercase tracking-[0.08em]">
+          <div className="ml-auto flex shrink-0 items-center gap-2">
+            <div className="hidden rounded-md border border-border p-0.5 text-[11px] uppercase tracking-[0.08em] sm:flex">
               {(["teste", "producao"] as const).map((e) => (
                 <button
                   key={e}
@@ -165,6 +165,12 @@ export function AppShell() {
               ))}
             </div>
             <button
+              onClick={() => setEnv(env === "teste" ? "producao" : "teste")}
+              className="rounded-md border border-border px-2 py-1.5 text-[11px] uppercase tracking-[0.08em] sm:hidden"
+            >
+              {env === "teste" ? "Teste" : "Prod"}
+            </button>
+            <button
               onClick={toggleTheme}
               aria-label="Alternar tema"
               className="rounded-md border border-border p-2 hover:bg-surface-2"
@@ -175,10 +181,11 @@ export function AppShell() {
                 <Moon strokeWidth={1.5} className="size-4" />
               )}
             </button>
-            <div className="mono grid size-8 place-items-center rounded-full border border-border bg-surface-2 text-[11px]">
+            <div className="mono hidden size-8 place-items-center rounded-full border border-border bg-surface-2 text-[11px] sm:grid">
               RN
             </div>
           </div>
+
         </header>
 
         <main className="min-w-0 flex-1">
