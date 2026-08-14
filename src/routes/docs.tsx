@@ -191,7 +191,7 @@ function Docs() {
             <h2 className="text-[18px]">Erros</h2>
             <div className="mt-4 rounded-xl border border-border bg-surface-1">
               {ERRORS.map(([c, k, d]) => (
-                <div key={k as string} className="grid grid-cols-[48px_150px_1fr] gap-3 border-b border-border p-3.5 text-[13px] last:border-0">
+                <div key={k as string} className="grid grid-cols-1 gap-2 sm:grid-cols-[48px_150px_minmax(0,1fr)] sm:gap-3 border-b border-border p-3.5 text-[13px] last:border-0">
                   <span className="mono text-faint">{c}</span>
                   <span className="mono text-[12px]">{k}</span>
                   <span className="text-muted-foreground">{d}</span>
