@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { chargeById, tenantBySlug, USD_BRL } from "@/lib/mock/data";
 import { brl, crypto6, scan, trunc } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { readableOn } from "@/lib/store";
 
 export const Route = createFileRoute("/pay/$id")({
   head: () => ({
@@ -92,6 +93,7 @@ function Checkout() {
   const { id } = Route.useParams();
   const charge = chargeById(id);
   const tenant = tenantBySlug(charge.tenantSlug);
+  const accent = tenant.accent;
 
   const [step, setStep] = useState<Step>("moeda");
   const [err, setErr] = useState<ErrorState>("none");
