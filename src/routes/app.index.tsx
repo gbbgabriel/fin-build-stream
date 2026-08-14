@@ -307,8 +307,8 @@ function Dashboard() {
                 <AreaChart data={series}>
                   <defs>
                     <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="var(--text)" stopOpacity={0.12} />
-                      <stop offset="100%" stopColor="var(--text)" stopOpacity={0} />
+                      <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.2} />
+                      <stop offset="100%" stopColor="var(--accent)" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid stroke="var(--border)" strokeDasharray="2 4" vertical={false} />
@@ -324,7 +324,7 @@ function Dashboard() {
                       color: "var(--text)",
                     }}
                   />
-                  <Area type="monotone" dataKey="total" stroke="var(--text)" strokeWidth={1.5} fill="url(#fill)" />
+                  <Area type="monotone" dataKey="total" stroke="var(--accent)" strokeWidth={2} fill="url(#fill)" />
                   <Area type="monotone" dataKey="usdt" stroke="var(--text-muted)" strokeWidth={1.5} strokeDasharray="4 3" fill="none" />
                 </AreaChart>
               </ResponsiveContainer>
@@ -346,7 +346,7 @@ function Dashboard() {
                   <CartesianGrid stroke="var(--border)" strokeDasharray="2 4" vertical={false} />
                   <XAxis dataKey="label" {...axis} tickLine={false} axisLine={false} minTickGap={30} />
                   <YAxis {...axis} tickLine={false} axisLine={false} width={54} />
-                  <Line type="monotone" dataKey="total" stroke="var(--text)" strokeWidth={1.5} dot={false} />
+                  <Line type="monotone" dataKey="total" stroke="var(--accent)" strokeWidth={2} dot={false} />
                 </LineChart>
               </ResponsiveContainer>
             )}
@@ -489,7 +489,7 @@ function Dashboard() {
                 <BarChart data={byWeekday}>
                   <CartesianGrid stroke="var(--border)" strokeDasharray="2 4" vertical={false} />
                   <XAxis dataKey="label" {...axis} tickLine={false} axisLine={false} />
-                  <Bar dataKey="total" fill="var(--text)" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="total" fill="var(--accent)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
