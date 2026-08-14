@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { chargeById, tenantBySlug, USD_BRL } from "@/lib/mock/data";
 import { brl, crypto6, scan, trunc } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { readableOn } from "@/lib/store";
 
 export const Route = createFileRoute("/pay/$id")({
   head: () => ({
@@ -92,6 +93,7 @@ function Checkout() {
   const { id } = Route.useParams();
   const charge = chargeById(id);
   const tenant = tenantBySlug(charge.tenantSlug);
+  const accent = tenant.accent;
 
   const [step, setStep] = useState<Step>("moeda");
   const [err, setErr] = useState<ErrorState>("none");
@@ -150,7 +152,7 @@ function Checkout() {
           <div className="flex items-center gap-3">
             <span
               className="mono grid size-9 place-items-center rounded-lg border border-border text-[12px]"
-              style={{ background: tenant.accent, color: "#0A0A0A" }}
+              style={{ background: accent, color: readableOn(accent) }}
               aria-hidden
             >
               {tenant.initials}

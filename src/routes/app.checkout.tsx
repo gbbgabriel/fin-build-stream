@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { PaymentMethodsMatrix } from "@/components/PaymentMethodsMatrix";
-import { useApp } from "@/lib/store";
+import { readableOn, useApp } from "@/lib/store";
 
 export const Route = createFileRoute("/app/checkout")({
   head: () => ({
@@ -16,9 +16,8 @@ export const Route = createFileRoute("/app/checkout")({
 });
 
 function CheckoutConfig() {
-  const { tenant } = useApp();
+  const { tenant, accent, setAccent } = useApp();
   const [name, setName] = useState(tenant.name);
-  const [accent, setAccent] = useState(tenant.accent);
   const [currencies, setCurrencies] = useState<string[]>(["USDC", "USDT"]);
   const [quoteMin, setQuoteMin] = useState("15");
 
@@ -51,6 +50,7 @@ function CheckoutConfig() {
                     className="h-9 w-12 rounded-md border border-border bg-surface-2"
                   />
                   <span className="mono text-[12px] text-muted-foreground">{accent}</span>
+                  <span className="text-[11px] text-faint">Aplica no painel e no checkout</span>
                 </div>
               </label>
               <label className="block">
@@ -146,7 +146,7 @@ function CheckoutConfig() {
               <div className="flex items-center gap-3">
                 <span
                   className="mono grid size-9 place-items-center rounded-lg text-[12px]"
-                  style={{ background: accent, color: "#0A0A0A" }}
+                  style={{ background: accent, color: readableOn(accent) }}
                 >
                   {tenant.initials}
                 </span>
