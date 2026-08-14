@@ -194,7 +194,7 @@ function Dashboard() {
     return [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
   }, [confirmed]);
 
-  const axis = { stroke: "var(--text-faint)", fontSize: 11, fontFamily: "var(--font-mono)" };
+  const axis = { stroke: "var(--text-faint)", fontSize: 11, fontFamily: "var(--font-sans)" };
 
   return (
     <div className="mx-auto max-w-[1400px] p-6">
@@ -257,7 +257,7 @@ function Dashboard() {
               <div className="mt-6">
                 <div className="label-xs mb-2">USDT vs USDC</div>
                 <div className="flex h-6 w-full overflow-hidden rounded-md border border-border">
-                  <div className="hatch" style={{ width: `${(usdt / allTime) * 100}%` }} aria-hidden />
+                  <div className="bg-primary" style={{ width: `${(usdt / allTime) * 100}%` }} aria-hidden />
                   <div className="bg-surface-3" style={{ width: `${(usdc / allTime) * 100}%` }} aria-hidden />
                 </div>
                 <div className="mono mt-2 flex flex-wrap justify-between gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
@@ -319,7 +319,7 @@ function Dashboard() {
                       background: "var(--surface-2)",
                       border: "1px solid var(--border)",
                       borderRadius: 8,
-                      fontFamily: "var(--font-mono)",
+                      fontFamily: "var(--font-sans)",
                       fontSize: 12,
                       color: "var(--text)",
                     }}

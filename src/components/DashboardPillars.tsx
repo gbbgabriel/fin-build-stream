@@ -99,7 +99,7 @@ export function DashboardPillars({
   m: DashboardMetrics;
   period: string;
 }) {
-  const axis = { stroke: "var(--text-faint)", fontSize: 10, fontFamily: "var(--font-mono)" };
+  const axis = { stroke: "var(--text-faint)", fontSize: 10, fontFamily: "var(--font-sans)" };
   const topMethod = m.byMethod[0];
 
   return (
@@ -132,7 +132,7 @@ export function DashboardPillars({
                   background: "var(--surface-2)",
                   border: "1px solid var(--border)",
                   borderRadius: 8,
-                  fontFamily: "var(--font-mono)",
+                  fontFamily: "var(--font-sans)",
                   fontSize: 12,
                   color: "var(--text)",
                 }}
