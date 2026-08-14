@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import "../styles.css";
 import { reportError } from "../lib/error-reporting";
 import { AppProvider } from "../lib/store";
 import { Toaster } from "@/components/ui/sonner";
