@@ -57,7 +57,7 @@ function Cobrancas() {
       <h1 className="mt-2 text-[20px]">Links de pagamento e produtos</h1>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-        <div className="rounded-xl border border-border bg-surface-1">
+        <div className="min-w-0 overflow-x-auto rounded-xl border border-border bg-surface-1">
           <div className="label-xs border-b border-border p-4">Links criados</div>
           <table className="w-full text-[13px]">
             <thead>
