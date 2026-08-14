@@ -31,7 +31,7 @@ export default defineConfig(async ({ command }) => {
   // "netlify", "cloudflare-module", entre outros suportados pelo nitro.
   if (command === "build") {
     const { nitro } = await import("nitro/vite");
-    plugins.push(nitro({ preset: "cloudflare-module" }));
+    plugins.push(nitro({ preset: "cloudflare-module", output: { dir: "dist" } }));
   }
 
   return {
