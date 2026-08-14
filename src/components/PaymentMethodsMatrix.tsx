@@ -166,8 +166,6 @@ export function PaymentMethodsMatrix({
             { name: "Stripe", detail: "Cartão internacional e assinaturas" },
             { name: "Asaas", detail: "Pix, boleto e cartão no Brasil" },
             { name: "Mercado Pago", detail: "Carteira e cartão" },
-            { name: "Pagar.me", detail: "Adquirência nacional" },
-            { name: "Adyen", detail: "Adquirência global" },
           ]}
           selected={[]}
           setSelected={noop}
