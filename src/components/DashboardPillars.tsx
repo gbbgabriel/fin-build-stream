@@ -85,7 +85,9 @@ function Row({
         )}
         <span className="truncate">{k}</span>
       </span>
-      <span className="mono shrink-0 text-[12px] whitespace-nowrap sm:text-[13px]">{v}</span>
+      <span className="mono max-w-[60%] shrink-0 truncate text-right text-[12px] sm:text-[13px]" title={v}>
+        {v}
+      </span>
     </div>
   );
 }
