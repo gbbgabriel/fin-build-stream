@@ -104,7 +104,7 @@ function Docs() {
         </Link>
       </header>
 
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-6 py-10 lg:grid-cols-[200px_minmax(0,1fr)]">
+      <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[200px_minmax(0,1fr)]">
         <nav className="hidden lg:block">
           <div className="sticky top-24 space-y-1 text-[13px]">
             {SECTIONS.map((s) => (
@@ -122,7 +122,7 @@ function Docs() {
           </div>
         </nav>
 
-        <main className="max-w-[720px]">
+        <main className="min-w-0 max-w-[720px]">
           <section id="inicio" className="scroll-mt-24">
             <h1 className="text-[26px] tracking-[-0.01em]">API FinBuild Pay</h1>
             <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">
