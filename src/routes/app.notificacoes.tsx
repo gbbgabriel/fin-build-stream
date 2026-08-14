@@ -41,7 +41,7 @@ function Notificacoes() {
       <h1 className="mt-2 text-[20px]">Notificações por e-mail</h1>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_400px]">
-        <section className="rounded-xl border border-border bg-surface-1">
+        <section className="rounded-xl border border-border bg-surface-1 elev">
           <div className="label-xs grid grid-cols-[1fr_80px_80px] gap-2 border-b border-border p-4">
             <span>Evento</span>
             <span className="text-right">Lojista</span>
@@ -75,7 +75,7 @@ function Notificacoes() {
         </section>
 
         <section className="space-y-6">
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Preview do template</div>
             <div className="mt-4 rounded-lg border border-border bg-surface-2 p-5">
               <div className="text-[14px] font-medium">Pagamento confirmado</div>
@@ -98,7 +98,7 @@ function Notificacoes() {
             </button>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Log de envios</div>
             <div className="mt-3 space-y-2 text-[12px]">
               {LOG.map(([when, ev, to, st]) => (

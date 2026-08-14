@@ -35,7 +35,7 @@ function AdminOverview() {
           ["Transações criadas", ALL_TX.length.toLocaleString("pt-BR")],
           ["Volume agregado", brl(TOTAL_VOLUME)],
         ].map(([k, v]) => (
-          <div key={k} className="rounded-xl border border-border bg-surface-1 p-5">
+          <div key={k} className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">{k}</div>
             <div className="mono mt-2 text-[22px]">{v}</div>
           </div>
@@ -43,7 +43,7 @@ function AdminOverview() {
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
-        <section className="rounded-xl border border-border bg-surface-1">
+        <section className="rounded-xl border border-border bg-surface-1 elev">
           <header className="flex items-center gap-2 border-b border-border px-4 py-3">
             <span className="text-[13px]">Maiores lojistas por volume</span>
             <Link
@@ -71,7 +71,7 @@ function AdminOverview() {
           </div>
         </section>
 
-        <section className="rounded-xl border border-border bg-surface-1">
+        <section className="rounded-xl border border-border bg-surface-1 elev">
           <header className="flex items-center gap-2 border-b border-border px-4 py-3">
             <span className="text-[13px]">Atividade recente</span>
             <Link

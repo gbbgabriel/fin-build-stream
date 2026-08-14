@@ -35,7 +35,7 @@ function Wallets() {
       </div>
 
       {(["USDC", "USDT"] as const).map((c) => (
-        <section key={c} className="mt-6 rounded-xl border border-border bg-surface-1 p-5">
+        <section key={c} className="mt-6 rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="flex items-center justify-between">
             <div className="label-xs">Endereço de recebimento · {c}</div>
             <span className="rounded-full border border-border bg-surface-3 px-2 py-0.5 text-[11px] uppercase tracking-[0.08em]">
@@ -65,7 +65,7 @@ function Wallets() {
         </section>
       ))}
 
-      <section className="mt-6 rounded-xl border border-border bg-surface-1 p-5">
+      <section className="mt-6 rounded-xl border border-border bg-surface-1 elev p-5">
         <div className="label-xs">Histórico de alteração</div>
         <table className="mt-3 w-full text-[13px]">
           <tbody>
@@ -93,7 +93,7 @@ function Wallets() {
                   Assine a mensagem abaixo com a wallet informada. Nenhuma transação é enviada e
                   nenhuma taxa é cobrada.
                 </p>
-                <pre className="mono mt-4 rounded-lg border border-border bg-surface-1 p-3 text-[11px] text-muted-foreground">
+                <pre className="mono mt-4 rounded-lg border border-border bg-surface-1 elev p-3 text-[11px] text-muted-foreground">
 FinBuild Pay — verificação de posse
 Org: {tenant.name}
 Nonce: 8f2c41ab93de7011

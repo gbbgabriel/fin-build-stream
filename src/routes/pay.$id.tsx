@@ -395,7 +395,7 @@ function Checkout() {
                       ))}
                     </div>
                   ) : (
-                    <div className="rounded-xl border border-border bg-surface-1 p-5">
+                    <div className="rounded-xl border border-border bg-surface-1 elev p-5">
                       <div className="flex items-center justify-between text-[13px]">
                         <span className="mono">{trunc(PAYER, 6, 4)}</span>
                         <span className="label-xs">Polygon</span>
@@ -419,7 +419,7 @@ function Checkout() {
                   )}
                 </div>
               ) : (
-                <div className="mt-6 rounded-xl border border-border bg-surface-1 p-5">
+                <div className="mt-6 rounded-xl border border-border bg-surface-1 elev p-5">
                   <div className="flex flex-wrap items-start gap-6">
                     <QrMock seed={id} />
                     <div className="min-w-[240px] flex-1 space-y-4">
@@ -513,7 +513,7 @@ function Checkout() {
                 Os fundos foram enviados diretamente para a wallet de {tenant.name}.
               </p>
 
-              <dl className="mt-8 rounded-xl border border-border bg-surface-1 p-5 text-[13px]">
+              <dl className="mt-8 rounded-xl border border-border bg-surface-1 elev p-5 text-[13px]">
                 {[
                   ["Valor", `${crypto6(amount)} ${currency}`],
                   ["Equivalente", brl(charge.fiatBRL)],

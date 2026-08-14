@@ -48,7 +48,7 @@ function ApiPage() {
       <h1 className="mt-2 text-[20px]">API e webhooks</h1>
 
       <section className="mt-6 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-xl border border-border bg-surface-1 p-5">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">Chave publicável</div>
           <div className="mono mt-2 rounded-md border border-border bg-surface-2 px-3 py-2 text-[12px]">
             pk_{env === "teste" ? "test" : "live"}_2f8a41c0b7e5
@@ -78,7 +78,7 @@ function ApiPage() {
           </button>
         </div>
 
-        <div className="rounded-xl border border-border bg-surface-1 p-5">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">Endpoint de webhook</div>
           <div className="mono mt-2 rounded-md border border-border bg-surface-2 px-3 py-2 text-[12px]">
             https://api.orbita.com.br/webhooks/finbuild
@@ -107,7 +107,7 @@ function ApiPage() {
       </section>
 
       <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <div className="min-w-0 overflow-x-auto rounded-xl border border-border bg-surface-1">
+        <div className="min-w-0 overflow-x-auto rounded-xl border border-border bg-surface-1 elev">
           <div className="label-xs border-b border-border p-4">Log de entregas</div>
           <table className="w-full whitespace-nowrap text-[13px]">
             <tbody>
@@ -132,7 +132,7 @@ function ApiPage() {
           </table>
         </div>
 
-        <div className="rounded-xl border border-border bg-surface-1 p-5">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">Payload do evento</div>
           <pre className="mono mt-3 overflow-x-auto rounded-lg border border-border bg-surface-2 p-3 text-[11px] text-muted-foreground">
 {PAYLOAD}

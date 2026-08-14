@@ -17,12 +17,12 @@ const Ctx = createContext<AppState | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [tenantId, setTenantId] = useState(TENANTS[0]!.id);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [env, setEnv] = useState<"teste" | "producao">("producao");
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.toggle("light", theme === "light");
+    root.classList.toggle("dark", theme === "dark");
     root.classList.toggle("no-brand", !BRAND_ACCENT);
   }, [theme]);
 

@@ -104,7 +104,7 @@ function AdminRelatorios() {
           ["Ticket médio", brl(ticket)],
           ["Volume histórico", brl(TOTAL_VOLUME)],
         ].map(([k, v]) => (
-          <div key={k} className="rounded-xl border border-border bg-surface-1 p-5">
+          <div key={k} className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">{k}</div>
             <div className="mono mt-2 text-[20px]">{v}</div>
           </div>
@@ -112,7 +112,7 @@ function AdminRelatorios() {
       </div>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        <section className="rounded-xl border border-border bg-surface-1 p-5">
+        <section className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">Distribuição por status</div>
           <div className="mt-4 space-y-3">
             {byStatus.map(([s, n]) => (
@@ -144,7 +144,7 @@ function AdminRelatorios() {
           </div>
         </section>
 
-        <section className="rounded-xl border border-border bg-surface-1 p-5">
+        <section className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">Ranking de lojistas (histórico)</div>
           <div className="mt-4 space-y-3">
             {ranking.map((r) => (

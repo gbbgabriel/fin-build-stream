@@ -30,13 +30,15 @@
   --color-faint: var(--text-faint);
   --color-accent: var(--surface-3);
   --color-accent-foreground: var(--text);
-  --color-destructive: var(--text);
+  --color-destructive: #df1b41;
   --color-destructive-foreground: var(--fg-invert);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --color-input: var(--border);
   --color-ring: var(--text);
   --color-brand: var(--accent-brand);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
   --color-sidebar: var(--surface-1);
   --color-sidebar-foreground: var(--text);
   --color-sidebar-primary: var(--accent);
@@ -50,34 +52,44 @@
   --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+/* Tema claro é o principal (padrão), inspirado no dashboard da Stripe. */
 :root {
-  --bg: #000000;
-  --surface-1: #0a0a0a;
-  --surface-2: #121212;
-  --surface-3: #1a1a1a;
-  --border: #232323;
-  --border-strong: #333333;
-  --text: #fafafa;
-  --text-muted: #8a8a8a;
-  --text-faint: #575757;
-  --fg-invert: #000000;
-  --accent: #ffffff;
-  --accent-brand: #d9f154;
+  --bg: #f6f9fc;
+  --surface-1: #ffffff;
+  --surface-2: #f6f8fb;
+  --surface-3: #eceff4;
+  --border: #e3e8ee;
+  --border-strong: #d3dae4;
+  --text: #1a1f36;
+  --text-muted: #5c6779;
+  --text-faint: #8792a2;
+  --fg-invert: #ffffff;
+  --accent: #635bff;
+  --accent-brand: #635bff;
+  --shadow-card: 0 1px 1px rgba(26, 31, 54, 0.04), 0 2px 6px rgba(26, 31, 54, 0.06);
+  --shadow-pop: 0 2px 5px rgba(26, 31, 54, 0.06), 0 12px 28px rgba(26, 31, 54, 0.1);
+  --success: #0e9f6e;
+  --warning: #b45309;
   --ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
-.light {
-  --bg: #ffffff;
-  --surface-1: #fafafa;
-  --surface-2: #f4f4f4;
-  --surface-3: #ededed;
-  --border: #e4e4e4;
-  --border-strong: #cfcfcf;
-  --text: #0a0a0a;
-  --text-muted: #6b6b6b;
-  --text-faint: #9a9a9a;
+.dark {
+  --bg: #0b0d17;
+  --surface-1: #121527;
+  --surface-2: #171b2e;
+  --surface-3: #1f2438;
+  --border: #262b40;
+  --border-strong: #363c56;
+  --text: #f2f4f8;
+  --text-muted: #99a2b8;
+  --text-faint: #6b7490;
   --fg-invert: #ffffff;
-  --accent: #0a0a0a;
+  --accent: #7a73ff;
+  --accent-brand: #8b85ff;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 12px 30px rgba(0, 0, 0, 0.55);
+  --success: #34d399;
+  --warning: #fbbf24;
 }
 
 /* Flag de acento de marca: .no-brand desliga 100% do acento colorido */
@@ -105,6 +117,13 @@
   h2,
   h3 {
     letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  pre,
+  code,
+  kbd {
+    font-family: var(--font-mono);
   }
 
   :focus-visible {
@@ -118,21 +137,35 @@
   }
 }
 
+/* Números em sans com tabular-nums (padrão Stripe); código real usa .code */
 @utility mono {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+@utility code {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
 @utility label-xs {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
 @utility hairline {
   border: 1px solid var(--border);
+}
+
+@utility elev {
+  box-shadow: var(--shadow-card);
+}
+
+@utility elev-pop {
+  box-shadow: var(--shadow-pop);
 }
 
 @utility surface-noise {

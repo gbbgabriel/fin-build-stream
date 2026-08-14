@@ -13,24 +13,27 @@ const LABEL: Record<TxStatus, string> = {
 export function StatusIcon({ status, className }: { status: TxStatus; className?: string }) {
   const c = cn("size-4 shrink-0", className);
   if (status === "confirmed")
-    return <CheckCircle2 strokeWidth={1.5} className={cn(c, "text-brand")} aria-hidden />;
+    return <CheckCircle2 strokeWidth={1.5} className={cn(c, "text-success")} aria-hidden />;
   if (status === "pending")
-    return <Clock strokeWidth={1.5} className={cn(c, "pulse-soft text-muted-foreground")} aria-hidden />;
+    return <Clock strokeWidth={1.5} className={cn(c, "pulse-soft text-warning")} aria-hidden />;
   if (status === "partial")
-    return <Droplet strokeWidth={1.5} className={cn(c, "text-muted-foreground")} aria-hidden />;
+    return <Droplet strokeWidth={1.5} className={cn(c, "text-warning")} aria-hidden />;
   if (status === "expired")
     return <AlertTriangle strokeWidth={1.5} className={cn(c, "text-muted-foreground")} aria-hidden />;
-  return <XCircle strokeWidth={1.5} className={c} aria-hidden />;
+  return <XCircle strokeWidth={1.5} className={cn(c, "text-destructive")} aria-hidden />;
 }
 
 export function StatusBadge({ status }: { status: TxStatus }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border bg-surface-3 px-2 py-0.5",
-        "text-[11px] uppercase tracking-[0.08em]",
-        status === "failed" || status === "expired" ? "border-border-strong" : "border-border",
-        status === "failed" && "line-through decoration-1",
+        "inline-flex items-center gap-1.5 rounded-full px-2 py-0.5",
+        "text-[11px] font-medium",
+        status === "confirmed" && "bg-success/12 text-success",
+        status === "pending" && "bg-warning/15 text-warning",
+        status === "partial" && "bg-warning/15 text-warning",
+        status === "failed" && "bg-destructive/10 text-destructive",
+        status === "expired" && "bg-surface-3 text-muted-foreground",
       )}
     >
       <StatusIcon status={status} className="size-3" />

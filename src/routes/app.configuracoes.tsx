@@ -48,7 +48,7 @@ function Config() {
       </div>
 
       {tab === "Organização" && (
-        <section className="mt-6 space-y-3 rounded-xl border border-border bg-surface-1 p-5 text-[13px]">
+        <section className="mt-6 space-y-3 rounded-xl border border-border bg-surface-1 elev p-5 text-[13px]">
           <label className="block">
             <span className="label-xs">Razão social</span>
             <input defaultValue={`${tenant.name} Tecnologia Ltda`} className="mt-1.5 w-full rounded-md border border-border bg-surface-2 px-3 py-2" />
@@ -77,7 +77,7 @@ function Config() {
       )}
 
       {tab === "Equipe" && (
-        <section className="mt-6 rounded-xl border border-border bg-surface-1">
+        <section className="mt-6 rounded-xl border border-border bg-surface-1 elev">
           {TEAM.map(({ n, e, r }) => (
             <div key={e} className="flex items-center gap-3 border-b border-border p-4 text-[13px] last:border-0">
               <span className="mono grid size-8 place-items-center rounded-full border border-border bg-surface-3 text-[11px]">
@@ -104,7 +104,7 @@ function Config() {
       )}
 
       {tab === "Auditoria" && (
-        <section className="mt-6 rounded-xl border border-border bg-surface-1">
+        <section className="mt-6 rounded-xl border border-border bg-surface-1 elev">
           {AUDIT_LOG.map((l) => (
             <div key={l.at} className="grid grid-cols-[150px_1fr_auto] items-center gap-3 border-b border-border p-3.5 text-[13px] last:border-0">
               <span className="mono text-[11px] text-faint">{l.at}</span>
@@ -120,7 +120,7 @@ function Config() {
 
       {tab === "Privacidade" && (
         <section className="mt-6 space-y-4">
-          <div className="rounded-xl border border-border bg-surface-1 p-5 text-[13px] leading-relaxed">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5 text-[13px] leading-relaxed">
             <div className="label-xs">LGPD</div>
             <p className="mt-2 text-muted-foreground">
               Armazenamos apenas nome, e-mail e endereço público de wallet dos pagadores. Não há

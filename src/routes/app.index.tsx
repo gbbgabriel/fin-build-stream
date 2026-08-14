@@ -194,7 +194,7 @@ function Dashboard() {
     return [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
   }, [confirmed]);
 
-  const axis = { stroke: "var(--text-faint)", fontSize: 11, fontFamily: "var(--font-mono)" };
+  const axis = { stroke: "var(--text-faint)", fontSize: 11, fontFamily: "var(--font-sans)" };
 
   return (
     <div className="mx-auto max-w-[1400px] p-6">
@@ -233,7 +233,7 @@ function Dashboard() {
 
       {/* Bloco de volume */}
 
-      <section className="mt-6 rounded-xl border border-border bg-surface-1 p-6">
+      <section className="mt-6 rounded-xl border border-border bg-surface-1 elev p-6">
         {loading ? (
           <Skeleton className="h-[120px] w-full bg-surface-3" />
         ) : (
@@ -256,8 +256,8 @@ function Dashboard() {
 
               <div className="mt-6">
                 <div className="label-xs mb-2">USDT vs USDC</div>
-                <div className="flex h-6 w-full overflow-hidden rounded-md border border-border">
-                  <div className="hatch" style={{ width: `${(usdt / allTime) * 100}%` }} aria-hidden />
+                <div className="flex h-6 w-full overflow-hidden rounded-full bg-surface-3">
+                  <div className="bg-primary" style={{ width: `${(usdt / allTime) * 100}%` }} aria-hidden />
                   <div className="bg-surface-3" style={{ width: `${(usdc / allTime) * 100}%` }} aria-hidden />
                 </div>
                 <div className="mono mt-2 flex flex-wrap justify-between gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
@@ -297,7 +297,7 @@ function Dashboard() {
 
       {/* Gráficos */}
       <section className="mt-6 grid gap-6 lg:grid-cols-3">
-        <div className="rounded-xl border border-border bg-surface-1 p-5 lg:col-span-2">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5 lg:col-span-2">
           <div className="label-xs">Faturamento ao longo do tempo</div>
           <div className="mt-4 h-[240px]">
             {loading ? (
@@ -307,8 +307,8 @@ function Dashboard() {
                 <AreaChart data={series}>
                   <defs>
                     <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="var(--text)" stopOpacity={0.12} />
-                      <stop offset="100%" stopColor="var(--text)" stopOpacity={0} />
+                      <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.2} />
+                      <stop offset="100%" stopColor="var(--accent)" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid stroke="var(--border)" strokeDasharray="2 4" vertical={false} />
@@ -319,12 +319,12 @@ function Dashboard() {
                       background: "var(--surface-2)",
                       border: "1px solid var(--border)",
                       borderRadius: 8,
-                      fontFamily: "var(--font-mono)",
+                      fontFamily: "var(--font-sans)",
                       fontSize: 12,
                       color: "var(--text)",
                     }}
                   />
-                  <Area type="monotone" dataKey="total" stroke="var(--text)" strokeWidth={1.5} fill="url(#fill)" />
+                  <Area type="monotone" dataKey="total" stroke="var(--accent)" strokeWidth={2} fill="url(#fill)" />
                   <Area type="monotone" dataKey="usdt" stroke="var(--text-muted)" strokeWidth={1.5} strokeDasharray="4 3" fill="none" />
                 </AreaChart>
               </ResponsiveContainer>
@@ -335,7 +335,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-border bg-surface-1 p-5">
+        <div className="rounded-xl border border-border bg-surface-1 elev p-5">
           <div className="label-xs">Volume acumulado (all-time)</div>
           <div className="mt-4 h-[240px]">
             {loading ? (
@@ -346,7 +346,7 @@ function Dashboard() {
                   <CartesianGrid stroke="var(--border)" strokeDasharray="2 4" vertical={false} />
                   <XAxis dataKey="label" {...axis} tickLine={false} axisLine={false} minTickGap={30} />
                   <YAxis {...axis} tickLine={false} axisLine={false} width={54} />
-                  <Line type="monotone" dataKey="total" stroke="var(--text)" strokeWidth={1.5} dot={false} />
+                  <Line type="monotone" dataKey="total" stroke="var(--accent)" strokeWidth={2} dot={false} />
                 </LineChart>
               </ResponsiveContainer>
             )}
@@ -356,7 +356,7 @@ function Dashboard() {
 
       <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         {/* Transações recentes */}
-        <div className="min-w-0 rounded-xl border border-border bg-surface-1">
+        <div className="min-w-0 rounded-xl border border-border bg-surface-1 elev">
           <div className="flex flex-wrap items-center gap-3 border-b border-border p-4">
             <div className="label-xs">Transações recentes</div>
             <div className="ml-auto flex flex-wrap gap-1 text-[12px]">
@@ -436,7 +436,7 @@ function Dashboard() {
 
         {/* Painéis laterais */}
         <div className="space-y-6">
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Últimas confirmações on-chain</div>
             <div className="mono mt-4 space-y-2 text-[12px]">
               {feed.map((t) => (
@@ -451,7 +451,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Saúde da rede Polygon</div>
             <dl className="mt-4 space-y-2 text-[13px]">
               {[
@@ -470,7 +470,7 @@ function Dashboard() {
             </p>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Top clientes por volume</div>
             <div className="mt-4 space-y-2 text-[13px]">
               {topCustomers.map(([name, v]) => (
@@ -482,14 +482,14 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-1 p-5">
+          <div className="rounded-xl border border-border bg-surface-1 elev p-5">
             <div className="label-xs">Volume por dia da semana</div>
             <div className="mt-4 h-[140px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={byWeekday}>
                   <CartesianGrid stroke="var(--border)" strokeDasharray="2 4" vertical={false} />
                   <XAxis dataKey="label" {...axis} tickLine={false} axisLine={false} />
-                  <Bar dataKey="total" fill="var(--text)" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="total" fill="var(--accent)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
