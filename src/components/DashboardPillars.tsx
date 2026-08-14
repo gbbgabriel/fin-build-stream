@@ -13,8 +13,8 @@ function Delta({ value, invert }: { value: number; invert?: boolean }) {
     <span
       className={cn(
         "mono inline-flex items-center gap-0.5 text-[11px]",
-        good && "text-brand",
-        bad && "text-foreground",
+        good && "text-success",
+        bad && "text-destructive",
         !good && !bad && "text-muted-foreground",
       )}
     >
@@ -77,9 +77,9 @@ function Row({
             aria-hidden
             className={cn(
               "size-1.5 shrink-0 rounded-full",
-              tone === "alert" && "bg-foreground",
-              tone === "warn" && "bg-muted-foreground",
-              tone === "ok" && "bg-brand",
+              tone === "alert" && "bg-destructive",
+              tone === "warn" && "bg-warning",
+              tone === "ok" && "bg-success",
             )}
           />
         )}
@@ -120,8 +120,8 @@ export function DashboardPillars({
             <AreaChart data={m.mrrSeries}>
               <defs>
                 <linearGradient id="mrrfill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="var(--text)" stopOpacity={0.16} />
-                  <stop offset="100%" stopColor="var(--text)" stopOpacity={0} />
+                  <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.22} />
+                  <stop offset="100%" stopColor="var(--accent)" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <XAxis dataKey="label" {...axis} tickLine={false} axisLine={false} minTickGap={28} />
@@ -140,7 +140,7 @@ export function DashboardPillars({
               <Area
                 type="monotone"
                 dataKey="mrr"
-                stroke="var(--text)"
+                stroke="var(--accent)"
                 strokeWidth={1.5}
                 fill="url(#mrrfill)"
               />
@@ -199,7 +199,7 @@ export function DashboardPillars({
                   </span>
                 </div>
                 <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-surface-3">
-                  <div className="h-full bg-foreground" style={{ width: `${share}%` }} />
+                  <div className="h-full bg-primary" style={{ width: `${share}%` }} />
                 </div>
               </div>
             );
