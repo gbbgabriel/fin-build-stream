@@ -32,13 +32,13 @@ function Delta({ value, invert }: { value: number; invert?: boolean }) {
 
 function Pillar({
   step,
-  icon,
+  icon: Icon,
   title,
   question,
   children,
 }: {
   step: string;
-  icon: string;
+  icon: LucideIcon;
   title: string;
   question: string;
   children: React.ReactNode;
@@ -46,9 +46,7 @@ function Pillar({
   return (
     <section className="flex min-w-0 flex-col rounded-xl border border-border bg-surface-1 elev">
       <header className="flex items-baseline gap-2 border-b border-border px-4 py-4 sm:px-5">
-        <span aria-hidden className="shrink-0 text-[14px]">
-          {icon}
-        </span>
+        <Icon aria-hidden strokeWidth={1.5} className="size-4 shrink-0 translate-y-0.5 text-muted-foreground" />
         <div className="min-w-0">
           <div className="text-[14px]">{title}</div>
           <div className="truncate text-[12px] text-faint">{question}</div>
