@@ -256,7 +256,7 @@ function Dashboard() {
 
               <div className="mt-6">
                 <div className="label-xs mb-2">USDT vs USDC</div>
-                <div className="flex h-6 w-full overflow-hidden rounded-md border border-border">
+                <div className="flex h-6 w-full overflow-hidden rounded-full bg-surface-3">
                   <div className="bg-primary" style={{ width: `${(usdt / allTime) * 100}%` }} aria-hidden />
                   <div className="bg-surface-3" style={{ width: `${(usdc / allTime) * 100}%` }} aria-hidden />
                 </div>
