@@ -205,12 +205,16 @@ export function DashboardPillars({
           })}
         </div>
 
-        <div className="label-xs mt-4">Por método de pagamento · {period}</div>
+        <div className="label-xs mt-4">Por forma de pagamento · {period}</div>
         <div className="mt-2 divide-y divide-border">
           {m.byMethod.slice(0, 4).map((x) => (
             <Row key={x.method} k={`${x.method} · ${x.count}`} v={brl(x.brl)} />
           ))}
         </div>
+        <p className="mt-2 text-[11px] leading-relaxed text-faint">
+          Pix, cartão e boleto entram nesta mesma visão assim que forem habilitados em Recebimento.
+        </p>
+
       </Pillar>
 
       {/* 3 · Operação */}
@@ -242,7 +246,7 @@ export function DashboardPillars({
           <Row k="Aguardando pagamento" v={String(m.pendingCharges)} tone="warn" />
           <Row k="Assinaturas aguardando 1ª cobrança" v={String(m.awaitingSubs)} />
           <Row k="Canceladas recentemente" v={String(m.recentlyCancelled)} />
-          <Row k="Reembolsos" v="0 · não custodial" />
+          <Row k="Reembolsos" v="0 · sem custódia de saldo" />
           <Row k="Próximas cobranças (7d)" v={String(m.nextCharges7d)} />
         </div>
 

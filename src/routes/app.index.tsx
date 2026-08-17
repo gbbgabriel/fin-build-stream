@@ -290,9 +290,10 @@ function Dashboard() {
           </div>
         )}
         <p className="mt-6 border-t border-border pt-4 text-[11px] text-faint">
-          Valores recebidos diretamente na sua wallet. A FinBuild não custodia fundos. Cotação de
-          referência {USD_BRL_LABEL}.
+          Cada pagamento cai direto na conta de recebimento configurada — a FinBuild não custodia
+          fundos. Valores exibidos em reais; cotação de referência {USD_BRL_LABEL}.
         </p>
+
       </section>
 
       {/* Gráficos */}
