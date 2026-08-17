@@ -10,7 +10,7 @@ export const Route = createFileRoute("/app/notificacoes")({
       { title: "Notificações — FinBuild Pay" },
       {
         name: "description",
-        content: "Avise clientes por e-mail, SMS e WhatsApp em cada evento de cobrança.",
+        content: "Avise clientes por e-mail em cada evento de cobrança.",
       },
       { name: "robots", content: "noindex" },
     ],
@@ -113,7 +113,7 @@ function Notificacoes() {
               {(
                 [
                   ["finbuild", "FinBuild envia por você", "Sem configuração. Cobrado por envio."],
-                  ["proprio", "Usar meu provedor", "SMTP, Twilio ou WhatsApp Business próprios."],
+                  ["proprio", "Usar meu provedor", "Configure seu servidor SMTP próprio."],
                 ] as const
               ).map(([v, title, detail]) => (
                 <button
@@ -147,7 +147,7 @@ function Notificacoes() {
             ) : (
               <div className="mt-4 space-y-2">
                 <input placeholder="smtp.seuprovedor.com" className="field mono" />
-                <input placeholder="Token do WhatsApp Business" className="field mono" />
+                <input placeholder="Usuário SMTP" className="field mono" />
                 <button onClick={() => toast("Credenciais salvas (simulado)")} className="btn btn-primary w-full">
                   Salvar credenciais
                 </button>
