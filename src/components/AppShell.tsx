@@ -29,7 +29,7 @@ const NAV = [
   { to: "/app/cobrancas", label: "Cobranças", icon: CreditCard },
   { to: "/app/assinaturas", label: "Assinaturas", icon: RefreshCcw },
   { to: "/app/checkout", label: "Checkout", icon: Layers },
-  { to: "/app/wallets", label: "Wallets", icon: Wallet },
+  { to: "/app/wallets", label: "Recebimento", icon: Wallet },
   { to: "/app/api", label: "API & Webhooks", icon: KeyRound },
   { to: "/app/notificacoes", label: "Notificações", icon: Bell },
   { to: "/app/configuracoes", label: "Configurações", icon: Settings },
