@@ -18,12 +18,10 @@ export const Route = createFileRoute("/app/notificacoes")({
   component: Notificacoes,
 });
 
-type Channel = "email" | "sms" | "whatsapp";
+type Channel = "email";
 
 const CHANNELS: { id: Channel; label: string; icon: typeof Mail; price: string }[] = [
   { id: "email", label: "E-mail", icon: Mail, price: "R$ 0,02 por envio" },
-  { id: "sms", label: "SMS", icon: Smartphone, price: "R$ 0,18 por envio" },
-  { id: "whatsapp", label: "WhatsApp", icon: MessageCircle, price: "R$ 0,12 por conversa" },
 ];
 
 const EVENTS = [
@@ -38,34 +36,28 @@ const EVENTS = [
 ];
 
 const LOG = [
-  ["03 ago 2026 · 14:22", "WhatsApp", "pagamento confirmado", "+55 11 9••••-4471", "entregue"],
-  ["03 ago 2026 · 11:07", "E-mail", "renovação próxima", "marcos.lima@uol.com.br", "aberto"],
-  ["02 ago 2026 · 19:41", "SMS", "falha de renovação", "+55 21 9••••-8830", "falhou"],
+  ["03 ago 2026 · 14:22", "E-mail", "pagamento confirmado", "marcos.lima@uol.com.br", "entregue"],
+  ["03 ago 2026 · 11:07", "E-mail", "renovação próxima", "ana.souza@gmail.com", "aberto"],
+  ["02 ago 2026 · 19:41", "E-mail", "falha de renovação", "pedro.rocha@outlook.com", "falhou"],
 ];
 
 function Notificacoes() {
   const [envio, setEnvio] = useState<"finbuild" | "proprio">("finbuild");
   const [state, setState] = useState(
-    EVENTS.map((label, i) => ({
+    EVENTS.map((label) => ({
       label,
       email: true,
-      sms: i % 3 === 0,
-      whatsapp: i < 4,
     })),
   );
 
-  const totalEnvios = state.reduce(
-    (acc, e) => acc + (e.email ? 1 : 0) + (e.sms ? 1 : 0) + (e.whatsapp ? 1 : 0),
-    0,
-  );
+  const totalEnvios = state.reduce((acc, e) => acc + (e.email ? 1 : 0), 0);
 
   return (
     <div className="mx-auto max-w-[1200px] p-4 sm:p-6">
       <div className="label-xs">Comunicação</div>
       <h1 className="mt-2 text-[20px]">Notificações ao cliente</h1>
       <p className="mt-2 max-w-2xl text-[13px] text-muted-foreground">
-        Escolha por qual canal cada evento é avisado. O WhatsApp e o SMS só disparam quando o cliente
-        tem telefone cadastrado.
+        Escolha por qual evento o cliente recebe aviso por e-mail.
       </p>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]">
@@ -164,7 +156,7 @@ function Notificacoes() {
           </div>
 
           <div className="card card-pad">
-            <div className="label-xs">Preview · WhatsApp</div>
+            <div className="label-xs">Preview · E-mail</div>
             <div className="mt-3 rounded-lg border border-border bg-surface-2 p-4 text-[13px] leading-relaxed">
               Olá <span className="mono">{"{{nome}}"}</span>, recebemos seu pagamento de{" "}
               <span className="mono">{"{{valor}}"}</span> referente a{" "}
