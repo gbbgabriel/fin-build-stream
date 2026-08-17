@@ -89,7 +89,7 @@
   --text-muted: #9aa0a0;
   --text-faint: #6d7474;
   --fg-invert: #ffffff;
-  --accent: #21product;
+  --accent: #2f9c83;
   --accent-brand: #3ea78f;
   --accent-foreground: #06120f;
   --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.4);
@@ -223,4 +223,89 @@
 
 @utility enter {
   animation: fb-in 0.2s var(--ease) both;
+}
+
+/* ---------- primitivos do design system ---------- */
+
+@utility card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+@utility card-pad {
+  padding: 20px;
+}
+
+@utility panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 2px 10px;
+  font-size: 11px;
+  line-height: 18px;
+  color: var(--text-muted);
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 14px;
+  transition: background-color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+@utility btn-primary {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  &:hover {
+    filter: brightness(0.94);
+  }
+}
+
+@utility btn-ghost {
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text);
+  &:hover {
+    background: var(--surface-2);
+  }
+}
+
+@utility field {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-1);
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  &:focus {
+    border-color: var(--accent-brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-brand) 18%, transparent);
+  }
+}
+
+@utility display-num {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
