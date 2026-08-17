@@ -9,9 +9,9 @@
 
 @theme inline {
   --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
   --color-background: var(--bg);
   --color-foreground: var(--text);
   --color-surface-1: var(--surface-1);
@@ -19,7 +19,7 @@
   --color-surface-3: var(--surface-3);
   --color-card: var(--surface-1);
   --color-card-foreground: var(--text);
-  --color-popover: var(--surface-2);
+  --color-popover: var(--surface-1);
   --color-popover-foreground: var(--text);
   --color-primary: var(--accent);
   --color-primary-foreground: var(--accent-foreground);
@@ -30,12 +30,12 @@
   --color-faint: var(--text-faint);
   --color-accent: var(--surface-3);
   --color-accent-foreground: var(--text);
-  --color-destructive: #df1b41;
+  --color-destructive: var(--danger);
   --color-destructive-foreground: var(--fg-invert);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --color-input: var(--border);
-  --color-ring: var(--text);
+  --color-ring: var(--accent-brand);
   --color-brand: var(--accent-brand);
   --color-success: var(--success);
   --color-warning: var(--warning);
@@ -46,58 +46,64 @@
   --color-sidebar-accent: var(--surface-3);
   --color-sidebar-accent-foreground: var(--text);
   --color-sidebar-border: var(--border);
-  --color-sidebar-ring: var(--text);
+  --color-sidebar-ring: var(--accent-brand);
   --font-sans:
     "Inter Tight", "Geist Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
-/* Tema claro é o principal (padrão), inspirado no dashboard da Stripe. */
+/*
+ * Identidade FinBuild: papel quente (não branco puro), tinta grafite-azulada
+ * e acento jade. Superfícies planas com hairline; sombra só em elevação real.
+ */
 :root {
-  --bg: #f6f9fc;
+  --bg: #f6f6f3;
   --surface-1: #ffffff;
-  --surface-2: #f6f8fb;
-  --surface-3: #eceff4;
-  --border: #e3e8ee;
-  --border-strong: #d3dae4;
-  --text: #1a1f36;
-  --text-muted: #5c6779;
-  --text-faint: #8792a2;
+  --surface-2: #f3f3ef;
+  --surface-3: #eae9e3;
+  --border: #e3e2db;
+  --border-strong: #cfcdc3;
+  --text: #17191c;
+  --text-muted: #5a5f66;
+  --text-faint: #8b9098;
   --fg-invert: #ffffff;
-  --accent: #635bff;
-  --accent-brand: #635bff;
+  --accent: #0f6f5c;
+  --accent-brand: #0f6f5c;
   --accent-foreground: #ffffff;
-  --shadow-card: 0 1px 1px rgba(26, 31, 54, 0.04), 0 2px 6px rgba(26, 31, 54, 0.06);
-  --shadow-pop: 0 2px 5px rgba(26, 31, 54, 0.06), 0 12px 28px rgba(26, 31, 54, 0.1);
-  --success: #0e9f6e;
-  --warning: #b45309;
+  --shadow-card: 0 1px 0 rgba(23, 25, 28, 0.03);
+  --shadow-pop: 0 1px 2px rgba(23, 25, 28, 0.06), 0 16px 40px rgba(23, 25, 28, 0.12);
+  --success: #0f7a52;
+  --warning: #9a6206;
+  --danger: #b02a1f;
   --ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
 .dark {
-  --bg: #0b0d17;
-  --surface-1: #121527;
-  --surface-2: #171b2e;
-  --surface-3: #1f2438;
-  --border: #262b40;
-  --border-strong: #363c56;
-  --text: #f2f4f8;
-  --text-muted: #99a2b8;
-  --text-faint: #6b7490;
+  --bg: #0e100f;
+  --surface-1: #161918;
+  --surface-2: #1c201e;
+  --surface-3: #242927;
+  --border: #2a2f2d;
+  --border-strong: #3b423f;
+  --text: #f0f1ee;
+  --text-muted: #9aa0a0;
+  --text-faint: #6d7474;
   --fg-invert: #ffffff;
-  --accent: #7a73ff;
-  --accent-brand: #8b85ff;
-  --accent-foreground: #ffffff;
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-pop: 0 12px 30px rgba(0, 0, 0, 0.55);
-  --success: #34d399;
-  --warning: #fbbf24;
+  --accent: #21product;
+  --accent-brand: #3ea78f;
+  --accent-foreground: #06120f;
+  --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 18px 44px rgba(0, 0, 0, 0.6);
+  --success: #3ec08a;
+  --warning: #d5a03a;
+  --danger: #e2685c;
 }
 
 /* Flag de acento de marca: .no-brand desliga 100% do acento colorido */
 .no-brand {
   --accent-brand: var(--text);
 }
+
 
 @layer base {
   * {
