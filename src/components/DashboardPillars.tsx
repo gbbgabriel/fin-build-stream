@@ -246,7 +246,7 @@ export function DashboardPillars({
           <Row k="Aguardando pagamento" v={String(m.pendingCharges)} tone="warn" />
           <Row k="Assinaturas aguardando 1ª cobrança" v={String(m.awaitingSubs)} />
           <Row k="Canceladas recentemente" v={String(m.recentlyCancelled)} />
-          <Row k="Reembolsos" v="0 · não custodial" />
+          <Row k="Reembolsos" v="0 · sem custódia de saldo" />
           <Row k="Próximas cobranças (7d)" v={String(m.nextCharges7d)} />
         </div>
 
