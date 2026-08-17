@@ -161,9 +161,10 @@ function Checkout() {
   const accent = tenant.accent;
 
   const [step, setStep] = useState<Step>("metodo");
-  const [method, setMethod] = useState("cripto");
-  const [asset, setAsset] = useState("USDC");
-  const [network, setNetwork] = useState("polygon");
+  const [method, setMethod] = useState("");
+  const [asset, setAsset] = useState("");
+  const [network, setNetwork] = useState("");
+
   const [cycle, setCycle] = useState<"mensal" | "anual">("mensal");
   const [pay, setPay] = useState<"wallet" | "manual">("wallet");
   const [connected, setConnected] = useState(false);
