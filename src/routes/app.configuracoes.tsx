@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Plus } from "lucide-react";
 import { toast } from "sonner";
-import { useApp } from "@/lib/store";
-import { AUDIT_LOG } from "@/lib/mock/data";
+import { readableOn, useApp } from "@/lib/store";
+import { AUDIT_LOG, TENANTS } from "@/lib/mock/data";
 
 export const Route = createFileRoute("/app/configuracoes")({
   head: () => ({
