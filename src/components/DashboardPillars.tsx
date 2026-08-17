@@ -205,12 +205,16 @@ export function DashboardPillars({
           })}
         </div>
 
-        <div className="label-xs mt-4">Por método de pagamento · {period}</div>
+        <div className="label-xs mt-4">Por forma de pagamento · {period}</div>
         <div className="mt-2 divide-y divide-border">
           {m.byMethod.slice(0, 4).map((x) => (
             <Row key={x.method} k={`${x.method} · ${x.count}`} v={brl(x.brl)} />
           ))}
         </div>
+        <p className="mt-2 text-[11px] leading-relaxed text-faint">
+          Pix, cartão e boleto entram nesta mesma visão assim que forem habilitados em Recebimento.
+        </p>
+
       </Pillar>
 
       {/* 3 · Operação */}
