@@ -23,9 +23,15 @@ export function monthlyAmount(sub: Subscription) {
 /** Método de pagamento derivado (determinístico) a partir do hash da transação. */
 export function paymentMethod(tx: Transaction) {
   const seed = parseInt(tx.hash.slice(2, 6), 16);
-  const via = seed % 100 < 62 ? "Carteira conectada" : seed % 100 < 88 ? "QR / transferência" : "Link de pagamento";
-  return `${via} · ${tx.currency}`;
+  const via =
+    seed % 100 < 62
+      ? "Carteira conectada"
+      : seed % 100 < 88
+        ? "QR / transferência"
+        : "Link de pagamento";
+  return via;
 }
+
 
 export interface DashboardMetrics {
   mrr: number;
