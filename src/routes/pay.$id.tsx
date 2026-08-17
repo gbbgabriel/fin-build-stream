@@ -319,13 +319,17 @@ function Checkout() {
                     key={m.id}
                     option={m}
                     selected={method === m.id}
-                    onSelect={() => {
-                      setMethod(m.id);
-                      setStep("ativo");
-                    }}
+                    onSelect={() => setMethod(m.id)}
                   />
                 ))}
               </div>
+              <button
+                disabled={!method}
+                onClick={() => setStep("ativo")}
+                className="btn btn-primary mt-5 w-full disabled:opacity-50"
+              >
+                Continuar
+              </button>
               <p className="mt-4 text-[12px] text-faint">
                 Novos métodos são ativados pelo lojista sem alterar este checkout.
               </p>
@@ -341,13 +345,17 @@ function Checkout() {
                     key={a.id}
                     option={a}
                     selected={asset === a.id}
-                    onSelect={() => {
-                      setAsset(a.id);
-                      setStep("rede");
-                    }}
+                    onSelect={() => setAsset(a.id)}
                   />
                 ))}
               </div>
+              <button
+                disabled={!asset}
+                onClick={() => setStep("rede")}
+                className="btn btn-primary mt-5 w-full disabled:opacity-50"
+              >
+                Continuar
+              </button>
             </section>
           )}
 
@@ -360,15 +368,21 @@ function Checkout() {
                     key={n.id}
                     option={n}
                     selected={network === n.id}
-                    onSelect={() => {
-                      setNetwork(n.id);
-                      setSeconds(899);
-                      setExpired(false);
-                      setStep("pagar");
-                    }}
+                    onSelect={() => setNetwork(n.id)}
                   />
                 ))}
               </div>
+              <button
+                disabled={!network}
+                onClick={() => {
+                  setSeconds(899);
+                  setExpired(false);
+                  setStep("pagar");
+                }}
+                className="btn btn-primary mt-5 w-full disabled:opacity-50"
+              >
+                Continuar
+              </button>
             </section>
           )}
 
