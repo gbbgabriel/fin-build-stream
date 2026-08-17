@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Plus } from "lucide-react";
 import { toast } from "sonner";
-import { useApp } from "@/lib/store";
-import { AUDIT_LOG } from "@/lib/mock/data";
+import { readableOn, useApp } from "@/lib/store";
+import { AUDIT_LOG, TENANTS } from "@/lib/mock/data";
 
 export const Route = createFileRoute("/app/configuracoes")({
   head: () => ({
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/app/configuracoes")({
   component: Config,
 });
 
-const TABS = ["Organização", "Equipe", "Auditoria", "Privacidade"] as const;
+const TABS = ["Empresas", "Organização", "Equipe", "Auditoria", "Privacidade"] as const;
 
 const TEAM = [
   { n: "Diego Ramalho", e: "diego@orbita.com.br", r: "Proprietário" },
@@ -25,21 +26,21 @@ const TEAM = [
 ];
 
 function Config() {
-  const { tenant } = useApp();
-  const [tab, setTab] = useState<(typeof TABS)[number]>("Organização");
+  const { tenant, setTenantId } = useApp();
+  const [tab, setTab] = useState<(typeof TABS)[number]>("Empresas");
 
   return (
-    <div className="mx-auto max-w-[1000px] p-6">
+    <div className="mx-auto max-w-[1000px] p-4 sm:p-6">
       <div className="label-xs">{tenant.name}</div>
       <h1 className="mt-2 text-[20px]">Configurações</h1>
 
-      <div className="mt-6 flex gap-1 border-b border-border text-[13px]">
+      <div className="mt-6 flex gap-1 overflow-x-auto border-b border-border text-[13px]">
         {TABS.map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`-mb-px border-b-2 px-3 py-2 ${
-              tab === t ? "border-[var(--text)] text-foreground" : "border-transparent text-muted-foreground"
+            className={`-mb-px whitespace-nowrap border-b-2 px-3 py-2 ${
+              tab === t ? "border-brand text-foreground" : "border-transparent text-muted-foreground"
             }`}
           >
             {t}
@@ -47,7 +48,50 @@ function Config() {
         ))}
       </div>
 
+      {tab === "Empresas" && (
+        <section className="mt-6">
+          <p className="text-[13px] text-muted-foreground">
+            Uma única conta pode administrar várias empresas. Cada empresa tem chaves, carteiras,
+            checkout e faturamento próprios.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {TENANTS.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => {
+                  setTenantId(t.id);
+                  toast(`Você está em ${t.name}`);
+                }}
+                className={`card flex items-center gap-3 p-4 text-left transition ${
+                  t.id === tenant.id ? "border-brand" : "hover:border-border-strong"
+                }`}
+              >
+                <span
+                  className="mono grid size-9 shrink-0 place-items-center rounded-md text-[12px]"
+                  style={{ background: t.accent, color: readableOn(t.accent) }}
+                  aria-hidden
+                >
+                  {t.initials}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-[14px]">{t.name}</span>
+                  <span className="mono block truncate text-[12px] text-faint">{t.domain}</span>
+                </span>
+                {t.id === tenant.id && <span className="pill shrink-0">atual</span>}
+              </button>
+            ))}
+            <button
+              onClick={() => toast("Fluxo de nova empresa (simulado)")}
+              className="card flex min-h-[76px] items-center justify-center gap-2 border-dashed p-4 text-[13px] text-muted-foreground hover:border-border-strong"
+            >
+              <Plus strokeWidth={1.5} className="size-4" /> Adicionar empresa
+            </button>
+          </div>
+        </section>
+      )}
+
       {tab === "Organização" && (
+
         <section className="mt-6 space-y-3 rounded-xl border border-border bg-surface-1 elev p-5 text-[13px]">
           <label className="block">
             <span className="label-xs">Razão social</span>

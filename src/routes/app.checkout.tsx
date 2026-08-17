@@ -100,8 +100,13 @@ function CheckoutConfig() {
           <PaymentMethodsMatrix currencies={currencies} setCurrencies={setCurrencies} />
 
           <div className="rounded-xl border border-border bg-surface-1 elev p-5">
-            <div className="label-xs">Campos solicitados ao pagador</div>
+            <div className="label-xs">Dados solicitados ao pagador</div>
+            <p className="mt-2 text-[12px] text-faint">
+              Peça só o essencial. Cada campo extra reduz a conversão — CPF e campo personalizado
+              aparecem apenas na última etapa do checkout.
+            </p>
             <div className="mt-3 space-y-2 text-[13px]">
+
               {["Nome completo", "E-mail", "CPF (opcional)", "Campo personalizado"].map((f, i) => (
                 <label key={f} className="flex items-center justify-between">
                   <span className="text-muted-foreground">{f}</span>
