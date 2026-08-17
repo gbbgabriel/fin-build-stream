@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, MessageCircle, Smartphone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
